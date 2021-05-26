@@ -17,7 +17,7 @@ body {
 }
 
 /* FONT — Main headings and body paragraph text */
-h1, h2, h3, p {
+h1, h2, h3, p, label {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     color: var(--white);

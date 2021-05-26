@@ -10,11 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Custom Font (Roc Grotesk) -->
     <link rel="stylesheet" href="https://use.typekit.net/bbp4sva.css">
-    <!-- Stylesheet -->
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Semantic UI -->
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> <script  src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> <script src="semantic/dist/semantic.min.js"></script>
+    <!-- Internal Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css"/>
     <title>Perfect Night In</title>
 </head>
 <body>
+    <!-- TEMPORARY placeholder content to apply font styles and color scheme -->
     <h1>Sample H1</h1>
     <h2>Sample H2</h2>
     <h3>Sample H3</h3>
@@ -25,5 +30,86 @@
         Sed posuere consectetur est at lobortis. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
     <button>I'm a cute button</button>
+
+    <!-- Home Page -->
+
+
+    <!-- Search Form Accordions -->
+    <div class="ui accordion">
+        <div class="active title">
+          <i class="dropdown icon"></i>
+          <h4>Food</h4>
+        </div>
+        <!-- Food form -->
+        <div class="content">
+            <div class="ui form food-form">
+                <div class="inline field">
+                  <label>Search by dish: </label>
+                  <input type="text">
+                </div>
+                <div class="inline field">
+                    <label>Search by ingredients: </label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="title">
+          <i class="dropdown icon"></i>
+          <h4>Movies/TV</h4>
+        </div>
+        <div class="content">
+        <!-- Movies/TV form -->
+            <div class="ui form movies-form">
+                <!-- Search by Genre -->
+                <div class="field">
+                    <label>Search by Genre</label>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="genre">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Genre</div>
+                        <div class="menu">
+                            <div class="item" data-value="action">Action</div>
+                            <div class="item" data-value="comedy">Comedy</div>
+                            <div class="item" data-value="docu">Documentary</div>
+                            <div class="item" data-value="drama">Drama</div>
+                            <div class="item" data-value="foreign">Foreign</div>
+                            <div class="item" data-value="lol">Only Star Wars movies</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Search by Genre (alt option) -->
+                <div class="ui form">
+                    <div class="field">
+                      <select>
+                        <option value="">Gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                <!-- Search by Actor -->
+                <div class="inline field">
+                    <label>Search by actor: </label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="title">
+          <i class="dropdown icon"></i>
+          <h4>Activities</h4>
+        </div>
+        <div class="content">
+          <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+          <p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+        </div>
+      </div>
+
+
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Internal Script File -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
