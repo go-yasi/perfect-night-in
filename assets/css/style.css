@@ -1,18 +1,100 @@
-h4, h5, h6, button {
-    font-family: roc-grotesk-wide, sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    text-transform: uppercase;
-    letter-spacing: .1em;
+/* Color Scheme */
+:root {
+    --black: #191919;
+    --red: #840000;
+    --mustard: #EAA548;
+    --white:#fdfbf4;
 }
 
+/* Global Site Styles */
+* {
+    box-sizing: border-box;
+}
+
+/* Site body */
+body {
+    background-color: var(--black);
+}
+
+/* FONT — Main headings and body paragraph text */
 h1, h2, h3, p {
     font-family: 'Inter', sans-serif;
-    font-weight: normal;
+    font-weight: 300;
+    color: var(--white);
 }
 
+/* FONT – Subheadings and button text */
+h4, h5, h6, button {
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--white);
+}
+
+/* Font sizes (desktop) */
+h1 {
+    font-size: 9vw;
+    font-weight: 400;
+    margin-block-start: .4em;
+    margin-block-end: .4em;
+}
+
+h2 {
+    font-size: 2.8vw;
+}
+
+h3 {
+    font-size: 2.2vw;
+}
+
+h4 {
+    font-size: 1.68vw;
+}
+
+h5 {
+    font-size: 1.2vw;
+}
+
+h6 {
+    font-size: 1vw;
+}
+
+/* Global button styles */
 button {
+    font-weight: 500;
+    letter-spacing: .15em;
     border-radius: 0;
     border: 0;
     padding: 1em 2em;
+    background-color: var(--red);
+    transition: .5s ease;
+}
+
+button:hover{
+    background-color: var(--mustard);
+    cursor: pointer;
+}
+
+/* Mobile Edits */
+@media screen and (max-width:727px) {
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 24px;
+    }
+    h5 {
+        font-size: 20px;
+    }
+    h6 {
+        font-size: 18px;
+    }
 }
