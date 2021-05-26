@@ -1,0 +1,18 @@
+h4, h5, h6, button {
+    font-family: roc-grotesk-wide, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+h1, h2, h3, p {
+    font-family: 'Inter', sans-serif;
+    font-weight: normal;
+}
+
+button {
+    border-radius: 0;
+    border: 0;
+    padding: 1em 2em;
+}
