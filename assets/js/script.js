@@ -98,7 +98,7 @@ function searchTopMovies(){
 	});
 }
 
-searchTopMovies();
+
 
 
 //var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
@@ -152,4 +152,7 @@ function searchMovies(movTitle, movGenre, limit){
 		console.log('-----------------------------');
 	});
 }
+
+searchTopMovies();
 searchMovies('transformers', '', '21');
+searchApi('stew', 'beef');
