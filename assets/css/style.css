@@ -92,7 +92,7 @@ a:hover {
     padding: 1em 2em;
     background-color: var(--red);
     transition: .5s ease;
-    margin: 0 1vw;
+    margin: 1vw;
 }
 
 .btn:hover{
@@ -102,12 +102,7 @@ a:hover {
 
 
 /* Cover Page */
-.cover-page {
-    border: 1px solid yellow;
-}
-
 .home-intro {
-    border: 1px solid blue;
     width: 60%;
     margin: 0 auto 1vw;
 }
@@ -126,10 +121,13 @@ a:hover {
 .accordion-button:after{
     opacity: 0;
 }
-
 .accordion-button {
     border-bottom: 1px solid var(--white);
     padding-bottom: .5em;
+}
+.accordion-button:focus {
+    box-shadow: 0 0 0 0;
+    border-color:var(--white)
 }
 
 /* Form Styles */
@@ -137,6 +135,38 @@ a:hover {
     border-radius: 0;
 }
 
+.form-select {
+    margin-bottom: 1vw;
+    border-radius: 0;
+}
+
+/* Checkboxes */
+.form-check {
+    padding-left:0;
+}
+.form-check-input {
+    margin-right: 1em;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0;
+}
+
+.form-check-input:checked {
+    background-color: var(--mustard);
+    border-color: var(--mustard);
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 0;
+    border-color:var(--mustard)
+}
+
+/* Search Button */
+.search-btn {
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 2vw;
+}
 
 
 /* ----------------------------- */
