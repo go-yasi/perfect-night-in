@@ -6,7 +6,7 @@ var boredURL = "https://www.boredapi.com/api/activity"
 
 var activityparam = "activity";
 //var linkparam = "link";
-var url;
+var url = boredURL;
 var participantsparam = "participants";
 var priceparam = "price";
 var typeparam = "type";
@@ -82,3 +82,5 @@ for (let i = 0; i < 5; i++) {
  
 }
 
+
+//
