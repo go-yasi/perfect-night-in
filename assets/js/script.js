@@ -104,9 +104,6 @@ function displayResult(){
 //   getActivities();
   
 // }
-=======
-  var result
-}
 
 
 
@@ -127,7 +124,7 @@ function searchTopMovies(){
 		console.log('top movies----------------------------------------------------------');
     	console.log(data); 
 		for(var i = 0; i < data.feed.results.length; i++){
-			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100);
+			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100.replace("200x200", "600x600"));
 
 			var movie = 
 			{
@@ -135,7 +132,7 @@ function searchTopMovies(){
 				genre: data.feed.results[i].genres[0].name ,
 				release: data.feed.results[i].releaseDate,				
 				description: '' ,				
-				artUrl: data.feed.results[i].artworkUrl100.replace("100x100", "600x600"),
+				artUrl: data.feed.results[i].artworkUrl100.replace("200x200", "600x600"),
 				trailer: ''
 			}
 			movies.push(movie);
@@ -170,8 +167,8 @@ function searchMovies(movTitle, movGenre, limit){
 	if(limit){
 		searchUrl += limitParameter + limit;
 	}
-	console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
-	console.log(searchUrl);
+	//console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
+	//console.log(searchUrl);
 
 	fetch(searchUrl, {})
 	.then(function (response) {
@@ -179,26 +176,57 @@ function searchMovies(movTitle, movGenre, limit){
     	return response.json();
  	})
 	.then(function (data) {
-    	console.log(data); 
+    	//console.log(data); 
 		
 		for(var i = 0; i < data.results.length; i++){
-			console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100 + ' \n: ' + data.results[i].previewUrl);
+			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
 			var movie = 
 			{
 				name: data.results[i].trackName,  
 				genre: data.results[i].primaryGenreName ,
-				release: data.results[i].releaseDate.slice(0,9),				
+				release: data.results[i].releaseDate.slice(0,10),				
 				description: data.results[i].longDescription ,					
 				artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
 				trailer: data.results[i].previewUrl
 			}
 			movies.push(movie);
 		}
-		console.log('-----------------------------');
+		//console.log('-----------------------------');
+    displayMovies();
 	});
 }
 
-searchTopMovies();
-searchMovies('transformers', '', '21');
-searchApi('stew', 'beef');
 
+
+
+function displayMovies(){
+  //console.log(movies)
+  for(var i = 0; i < 5; i++){  
+    var movResultDivEL = document.createElement('div');
+    
+
+    var movTitleEL = document.createElement('h3');
+    movTitleEL.textContent = movies[i].name;
+
+    var movGenreEL = document.createElement('p'); 
+    movGenreEL.textContent = movies[i].genre;
+    movGenreEL.className = '';//CSS CLASS
+
+    var movDateEL = document.createElement('p'); 
+    movDateEL.textContent = movies[i].release;
+    movDateEL.className = '';//CSS CLASS
+
+    var movImgEL = document.createElement('img');
+    movImgEL.src = movies[i].artUrl;
+    movImgEL.className = ''; //CSS CLASS
+
+    movResultDivEL.appendChild(movTitleEL);
+    movResultDivEL.appendChild(movGenreEL);
+    movResultDivEL.appendChild(movDateEL);
+    movResultDivEL.appendChild(movImgEL);
+
+    document.body.appendChild(movResultDivEL); //change where its displayed
+  }
+}
+
+//searchMovies('star', '', '20');
