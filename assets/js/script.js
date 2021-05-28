@@ -2,16 +2,26 @@
 //   .dropdown()
 // ;
 
-// var boredURL = "https://www.boredapi.com/api/activity"
-// var typeparam = 'type';
-// var participantparm = 'participants';
-// var priceparam = 'price';
+
+var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
+var baseSearchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?media=movie';
+var termParameter ='&term=';
+var termParameterVal = 'star+wars';
+var genreParameter = '&genreId=';
+var genreParameterVal = '4413'; 
+var limitParameter = '&limit=';
+var limitParameterVal = '25';
+
+var boredURL = "https://www.boredapi.com/api/activity"
+var typeparam = 'type';
+var participantparm = 'participants';
+var priceparam = 'price';
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
-
+var foodResults = [];
 var urlSearchParameter = '&q=';
-var urlIngredientsParameter = '&i=';
+var urlIngredientsParameter = 'i=';
 var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
@@ -19,8 +29,8 @@ var recipeResults;
 function searchApi(search, ingredients){
   // event.preventDefault();
 
-  urlSearchVal = document.querySelector('.search-param').value;
-  urlIngredientsVal = document.querySelector('.search-ingred').value;
+  urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
+  urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
 
 
   queryUrl = recipePuppyUrl;
@@ -56,57 +66,81 @@ function searchApi(search, ingredients){
       console.log(recipeResults.results[i].thumbnail);
       console.log('-----------');
 
-      var searchResults = {
+      var foodResult = {
         foodIngredients: recipeResults.results[i].ingredients,
         foodTitles: recipeResults.results[i].title,
         foodLinks: recipeResults.results[i].href,
-
+        foodPic: recipeResults.results[i].thumbnail,
       }
-      // searchResults.push(searchResults);
+      foodResults.push(foodResult);
     }
+    displayFood();
   }); 
   urlIngredientsVal = '';
   urlSearchVal = '';
   // console.log(document.querySelector('.search-param').value)
   // console.log(document.querySelector('.search-ingred').value)
-  console.log(queryUrl)
+  console.log(foodResults);
+  
 }
 
-function displayResult(){
+
+function displayFood(){
   
+  for (var i = 0;i < 5; i++){
+  var resultsEl = document.createElement('div');
+  resultsEl.className = 'food-result' // or which ever class you Preffer
 
-  var resultsEl = document.createElement('');
-  resultsEl.className = 'food-result'
+  var resultsTitleEl = document.createElement('h5');
+  resultsTitleEl.className = 'food-title' // or which ever class you Preffer
+  resultsTitleEl.textContent = foodResults[i].foodTitles;
 
-  var resultsIngredEl = document.createElement('');
-  resultsIngredEl.className = 'food-Ingred'
-  resultsIngredEl.textContent = searchResults.foodIngreds;
+  var resultsIngredEl = document.createElement('p');
+  resultsIngredEl.className = 'food-Ingred' // or which ever class you Preffer
+  resultsIngredEl.textContent = foodResults[i].foodIngredients;
 
-  // var ;
-};
+  var resultsLinksEl = document.createElement('a');
+  resultsLinksEl.className = 'food-links' // or which ever class you Preffer
+  resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
+  resultsLinksEl.textContent = foodResults[i].foodLinks;
+  // console.log(foodResults[i].foodLinks);
+
+  var resultsPicEl = document.createElement('img')
+  resultsPicEl.className = 'food-pic' // or which ever class you Preffer
+  resultsPicEl.src = foodResults[i].foodPic;
+  resultsPicEl.setAttribute('width', '150px')
+  resultsPicEl.setAttribute('height', '150px')
+  
+  
+  resultsEl.appendChild(resultsIngredEl);
+  resultsEl.appendChild(resultsTitleEl);
+  resultsEl.appendChild(resultsLinksEl);
+  resultsEl.appendChild(resultsPicEl);
+
+  document.body.appendChild(resultsEl);
+  }
+}
 
 
-// function getActivities() {
-// fetch(boredURL, {
-// })
+function getActivities() {
+fetch(boredURL, {
+})
 
-//   .then(function(response){
-//     return response.json();
-//     })
+  .then(function(response){
+    return response.json();
+    })
 
-//     .then(function (data){
-//       console.log(data);
-//     });
+    .then(function (data){
+      // console.log(data);
+    });
 //  console.log("test runs"); 
-// }
-
-// for (let i = 0; i < 5; i++) {
-//   getActivities();
-  
-// }
-=======
-  var result
 }
+
+for (let i = 0; i < 5; i++) {
+  getActivities();
+  
+}
+
 
 
 
@@ -144,16 +178,6 @@ function searchTopMovies(){
 }
 
 
-
-
-//var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
-var baseSearchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?media=movie';
-var termParameter ='&term=';
-var termParameterVal = 'star+wars';
-var genreParameter = '&genreId=';
-var genreParameterVal = '4413'; 
-var limitParameter = '&limit=';
-var limitParameterVal = '25';
 
 
 function searchMovies(movTitle, movGenre, limit){
@@ -197,8 +221,4 @@ function searchMovies(movTitle, movGenre, limit){
 		console.log('-----------------------------');
 	});
 }
-
-searchTopMovies();
-searchMovies('transformers', '', '21');
-searchApi('stew', 'beef');
 
