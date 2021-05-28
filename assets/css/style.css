@@ -4,6 +4,7 @@
     --red: #840000;
     --mustard: #EAA548;
     --white:#fdfbf4;
+    --gray: #707070;
 }
 
 /* Global Site Styles */
@@ -14,6 +15,14 @@
 /* Site body */
 body {
     background-color: var(--black);
+    color: var(--white);
+    height: 100vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
 }
 
 /* FONT — Main headings and body paragraph text */
@@ -24,7 +33,7 @@ h1, h2, h3, p, label {
 }
 
 /* FONT – Subheadings and button text */
-h4, h5, h6, button {
+h4, h5, h6, .btn {
     font-family: roc-grotesk-wide, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -35,7 +44,7 @@ h4, h5, h6, button {
 
 /* Font sizes (desktop) */
 h1 {
-    font-size: 9vw;
+    font-size: 10vw;
     font-weight: 400;
     margin-block-start: .4em;
     margin-block-end: .4em;
@@ -61,8 +70,21 @@ h6 {
     font-size: 1vw;
 }
 
+p {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--gray);
+}
+
+a:hover {
+    color: var(--red);
+}
+
 /* Global button styles */
-button {
+.btn {
     font-weight: 500;
     letter-spacing: .15em;
     border-radius: 0;
@@ -70,14 +92,86 @@ button {
     padding: 1em 2em;
     background-color: var(--red);
     transition: .5s ease;
+    margin: 1vw;
 }
 
-button:hover{
+.btn:hover{
     background-color: var(--mustard);
     cursor: pointer;
 }
 
-/* Mobile Edits */
+
+/* Cover Page */
+.home-intro {
+    width: 60%;
+    margin: 0 auto 1vw;
+}
+
+/* ----------------------------- */
+/* --- SEARCH FORM PAGE --- */
+/* ----------------------------- */
+/* Accordion Styles */
+.accordion, .accordion-header, .accordion-item, .accordion-button {
+    background-color: transparent !important;
+    border: 0;
+}
+.accordion-body {
+    color: var(--white);
+}
+.accordion-button:after{
+    opacity: 0;
+}
+.accordion-button {
+    border-bottom: 1px solid var(--white);
+    padding-bottom: .5em;
+}
+.accordion-button:focus {
+    box-shadow: 0 0 0 0;
+    border-color:var(--white)
+}
+
+/* Form Styles */
+.form-control {
+    border-radius: 0;
+}
+
+.form-select {
+    margin-bottom: 1vw;
+    border-radius: 0;
+}
+
+/* Checkboxes */
+.form-check {
+    padding-left:0;
+}
+.form-check-input {
+    margin-right: 1em;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0;
+}
+
+.form-check-input:checked {
+    background-color: var(--mustard);
+    border-color: var(--mustard);
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 0;
+    border-color:var(--mustard)
+}
+
+/* Search Button */
+.search-btn {
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 2vw;
+}
+
+
+/* ----------------------------- */
+/* --- MOBILE EDITS --- */
+/* ----------------------------- */
 @media screen and (max-width:727px) {
     h1 {
         font-size: 48px;
