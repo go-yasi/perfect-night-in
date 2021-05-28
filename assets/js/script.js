@@ -104,13 +104,6 @@ function displayResult(){
 //   getActivities();
   
 // }
-<<<<<<< HEAD
-
-=======
-=======
-  var result
-}
->>>>>>> e4b250291be03f709bc37be5b39725a67ee6a4fc
 
 
 
@@ -203,7 +196,6 @@ function searchMovies(movTitle, movGenre, limit){
 	});
 }
 
-<<<<<<< HEAD
 
 
 
@@ -211,32 +203,30 @@ function displayMovies(){
   //console.log(movies)
   for(var i = 0; i < 5; i++){  
     var movResultDivEL = document.createElement('div');
-  
+    
+
     var movTitleEL = document.createElement('h3');
     movTitleEL.textContent = movies[i].name;
 
     var movGenreEL = document.createElement('p'); 
     movGenreEL.textContent = movies[i].genre;
+    movGenreEL.className = '';//CSS CLASS
 
     var movDateEL = document.createElement('p'); 
     movDateEL.textContent = movies[i].release;
+    movDateEL.className = '';//CSS CLASS
 
     var movImgEL = document.createElement('img');
     movImgEL.src = movies[i].artUrl;
+    movImgEL.className = ''; //CSS CLASS
 
     movResultDivEL.appendChild(movTitleEL);
     movResultDivEL.appendChild(movGenreEL);
     movResultDivEL.appendChild(movDateEL);
     movResultDivEL.appendChild(movImgEL);
 
-    document.body.appendChild(movResultDivEL);
+    document.body.appendChild(movResultDivEL); //change where its displayed
   }
 }
 
 //searchMovies('star', '', '20');
-=======
-searchTopMovies();
-searchMovies('transformers', '', '21');
-searchApi('stew', 'beef');
-
->>>>>>> e4b250291be03f709bc37be5b39725a67ee6a4fc
