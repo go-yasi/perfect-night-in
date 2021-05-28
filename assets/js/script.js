@@ -104,7 +104,13 @@ function displayResult(){
 //   getActivities();
   
 // }
+<<<<<<< HEAD
 
+=======
+=======
+  var result
+}
+>>>>>>> e4b250291be03f709bc37be5b39725a67ee6a4fc
 
 
 
@@ -197,6 +203,7 @@ function searchMovies(movTitle, movGenre, limit){
 	});
 }
 
+<<<<<<< HEAD
 
 
 
@@ -227,3 +234,9 @@ function displayMovies(){
 }
 
 //searchMovies('star', '', '20');
+=======
+searchTopMovies();
+searchMovies('transformers', '', '21');
+searchApi('stew', 'beef');
+
+>>>>>>> e4b250291be03f709bc37be5b39725a67ee6a4fc
