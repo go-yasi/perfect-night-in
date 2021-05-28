@@ -19,10 +19,8 @@ body {
     height: 100vh;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
+.footcap {
+    text-align: center;
 }
 
 /* FONT — Main headings and body paragraph text */
@@ -67,7 +65,7 @@ h5 {
 }
 
 h6 {
-    font-size: 1vw;
+    font-size: 14px;
 }
 
 p {
@@ -110,6 +108,12 @@ a:hover {
 /* ----------------------------- */
 /* --- SEARCH FORM PAGE --- */
 /* ----------------------------- */
+/* Intro */
+.instructions {
+    width: 60%;
+    margin: 0 auto;
+}
+
 /* Accordion Styles */
 .accordion, .accordion-header, .accordion-item, .accordion-button {
     background-color: transparent !important;
@@ -119,11 +123,13 @@ a:hover {
     color: var(--white);
 }
 .accordion-button:after{
-    opacity: 0;
+    opacity: 1;
 }
 .accordion-button {
     border-bottom: 1px solid var(--white);
-    padding-bottom: .5em;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 1.25rem;
 }
 .accordion-button:focus {
     box-shadow: 0 0 0 0;
@@ -167,6 +173,17 @@ a:hover {
     margin: 0 auto;
     margin-top: 2vw;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ----------------------------- */
