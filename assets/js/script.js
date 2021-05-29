@@ -1,11 +1,26 @@
-// $('select.dropdown')
-//   .dropdown()
-// ;
+ $('select.dropdown')
+ .dropdown()
+;
 
+//replace top variables when done with these values
 var boredURL = "https://www.boredapi.com/api/activity"
-var typeparam = 'type';
-var participantparm = 'participants';
-var priceparam = 'price';
+
+var activityParam = "activity";
+var linkParam = "link";
+var activityBaseURL = " ";
+var urlActivities;
+var participantsParam = "participants";
+var priceParam = "price";
+var typeParam = "type";
+var urlActivitiesSearchParameter = '&q=';
+var urlActivitiesSearchVal;
+var urlActivitiesFormatParameter = '&format=';
+var urlActivitiesFormatVal;
+
+var searchActivitiesResults= [];
+var resultActivitiesDisplay = document.querySelector("results");
+
+
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
@@ -48,13 +63,13 @@ function searchApi(search, ingredients){
   $.ajax(settings).done(function (response) {
     // console.log(JSON.parse(response));
     recipeResults = JSON.parse(response);
-    console.log(recipeResults);
+    //console.log(recipeResults);
     for (var i = 0;i < 5; i++){
-      console.log(recipeResults.results[i].ingredients);
-      console.log(recipeResults.results[i].title);
-      console.log(recipeResults.results[i].href);
-      console.log(recipeResults.results[i].thumbnail);
-      console.log('-----------');
+    //  console.log(recipeResults.results[i].ingredients);
+    //  console.log(recipeResults.results[i].title);
+    //  console.log(recipeResults.results[i].href);
+    //  console.log(recipeResults.results[i].thumbnail);
+    //  console.log('-----------');
 
       var searchResults = {
         foodIngredients: recipeResults.results[i].ingredients,
@@ -67,9 +82,9 @@ function searchApi(search, ingredients){
  }); 
 urlIngredientsVal = '';
 urlSearchVal = '';
-console.log(document.querySelector('.search-param').value)
-console.log(document.querySelector('.search-ingred').value)
-  console.log(queryUrl)
+//console.log(document.querySelector('.search-param').value)
+//console.log(document.querySelector('.search-ingred').value)
+ // console.log(queryUrl)
 }
 
 function displayResult(){
@@ -82,27 +97,9 @@ function displayResult(){
   resultsIngredEl.className = 'food-Ingred'
   resultsIngredEl.textContent = searchResults.foodIngreds;
 
-   var ;
+//   var ;
 };
 
-
-function getActivities() {
-fetch(boredURL, {
-})
-
-.then(function(response){
-return response.json();
- })
-
-     .then(function (data){
-      console.log(data); 
-	    });
-  console.log("test runs"); 
- }
-
-for (let i = 0; i < 5; i++) {
-getActivities();
-  
 
 var movies = [];
 
@@ -117,10 +114,10 @@ fetch(topUrl, {})
     	return response.json();
  	})
 	.then(function (data) {
-		console.log('top movies----------------------------------------------------------');
-    	console.log(data); 
+		//console.log('top movies----------------------------------------------------------');
+    	//console.log(data); 
 		for(var i = 0; i < data.feed.results.length; i++){
-			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100);
+		//	console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100);
 
 			var movie = 
 			{
@@ -135,7 +132,6 @@ fetch(topUrl, {})
 		}
 	});
 }
-
 
 
 
@@ -163,8 +159,8 @@ function searchMovies(movTitle, movGenre, limit){
 	if(limit){
 		searchUrl += limitParameter + limit;
 	}
-	console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
-	console.log(searchUrl);
+	//console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
+	//console.log(searchUrl);
 
 	fetch(searchUrl, {})
 	.then(function (response) {
@@ -172,10 +168,10 @@ function searchMovies(movTitle, movGenre, limit){
     	return response.json();
  	})
 	.then(function (data) {
-    	console.log(data); 
+    	//console.log(data); 
 		
 		for(var i = 0; i < data.results.length; i++){
-			console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100 + ' \n: ' + data.results[i].previewUrl);
+			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100 + ' \n: ' + data.results[i].previewUrl);
 			var movie = 
 			{
 				name: data.results[i].trackName,  
@@ -187,7 +183,7 @@ function searchMovies(movTitle, movGenre, limit){
 			}
 			movies.push(movie);
 		}
-		console.log('-----------------------------');
+		//console.log('-----------------------------');
 	});
 }
 
@@ -196,27 +192,7 @@ searchMovies('transformers', '', '21');
 searchApi('stew', 'beef');
 
 
-
- $('select.dropdown')
- .dropdown()
- ;
-
-var boredURL = "https://www.boredapi.com/api/activity"
-
-var activityparam = "activity";
-var linkparam = "link";
-var activityBaseURL = " ";
-var participantsparam = "participants";
-var priceparam = "price";
-var typeparam = "type";
-var urlActivitiesSearchParameter = '&q=';
-var urlActivitiesSearchVal;
-var urlActivitiesFormatParameter = '&format=';
-//var urlFormatVal;
-
-var searchActivitiesResults= [];
-var resultActivitiesDisplay = document.querySelector("results");
-
+//Activities
 
 function clearContent() { //function to clear results from previous search
   while(resultDisplay.firstChild) {
@@ -224,11 +200,11 @@ function clearContent() { //function to clear results from previous search
   }
 }
 
-
+//Activities serch function
 function searchActivities(event){ //function to be called when search button is clicked
   event.preventDefault(); //prevent form default submit
   clearContent(); //clear previous results from page display
-  searchActivitiesResults= []; //clear data from previous search
+  searchActivitiesResults = []; //clear data from previous search
 
   //console.log(document.querySelector(".activity").value); //show input value in console
   //console.log(document.querySelector(".link'").value); //show input value in console
@@ -251,15 +227,18 @@ function searchActivities(event){ //function to be called when search button is 
 //}
 
 if(!(urlActivitiesSearchVal === '')){ //if search was inputed and query to url
-  url = boredURL + particpantsparam + priceparam + typeparam;
-}urlActivitiesFormatParamete
+	urlActivities = activityBaseURL +=  urlActivitiesSearchParameter + urlActivitiesSearchVal;
+}
 
- // if(!(urlActivitiesFormatParamete === '' || urlFormatVal === 'Example Option')){//if format was inputed and query to url
- //     url = baseUrl + urlFormatParameter + urlFormatVal;
- if (urlSearchVal){
-    queryUrl2 = recipePuppyUrl + urlSearchParameter + urlSearchVal;
+ if(!(urlActivitiesFormatParameter === '' || urlActivitiesFormatParameter === 'Example Option')){//if format was inputed and query to url
+	urlActivities = activityBaseURL  += urlActivitiesFormatParameter + urlActivitiesFormatVal;
+}
   }
-  }
+//Note:  consider add for loop her to advance through - decide contents??  & create activities object
+//for (let i = 0; i < 5; i++) {
+ //   searchActivities(); //call activities function
+ 
+//}  could be extra bracket
 
   console.log(url); //show url in console
 
@@ -286,8 +265,7 @@ fetch(boredURL, {
   }
 
 for (let i = 0; i < 5; i++) {
-    getActivities(); //obtain and display activities
+    getActivities(); //call activities function
  
 }
 
-}
