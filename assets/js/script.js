@@ -34,6 +34,7 @@ var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
 
+<<<<<<< HEAD
 
 function getActivities() {//request, response and loop through data
   
@@ -76,6 +77,11 @@ getActivities();
 
 
 function searchApi(search, ingredients){
+=======
+var startBtn = document.querySelector('.start-btn');
+
+function searchFood(search, ingredients){
+>>>>>>> main
   // event.preventDefault();
 
   urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
@@ -305,4 +311,12 @@ function displayMovies(){
   }
 }
 
+<<<<<<< HEAD
 //searchMovies('star', '', '20');
+=======
+//searchMovies('star', '', '20');
+
+startBtn.addEventListener("click", function (){
+  window.location.replace('./html/search-form.html');
+})
+>>>>>>> main
