@@ -1,9 +1,11 @@
- $('select.dropdown')
- .dropdown()
-;
+ //$('select.dropdown')
+ //.dropdown()
+//;
 
-//replace top variables when done with these values
-var boredURL = "https://www.boredapi.com/api/activity"
+//replace top variables when done with these values - chgd name 52921
+var boredactivitiesURL = "https://www.boredapi.com/api/activity"
+
+var activity = [];
 
 var activityParam = "activity";
 var linkParam = "link";
@@ -16,6 +18,7 @@ var urlActivitiesSearchParameter = '&q=';
 var urlActivitiesSearchVal;
 var urlActivitiesFormatParameter = '&format=';
 var urlActivitiesFormatVal;
+
 
 var searchActivitiesResults= [];
 var resultActivitiesDisplay = document.querySelector("results");
@@ -192,7 +195,10 @@ searchMovies('transformers', '', '21');
 searchApi('stew', 'beef');
 
 
+
 //Activities
+
+var activities = [];
 
 function clearContent() { //function to clear results from previous search
   while(resultDisplay.firstChild) {
@@ -226,14 +232,14 @@ function searchActivities(event){ //function to be called when search button is 
  //   url = boredURL + particpantsparam + priceparam;
 //}
 
-if(!(urlActivitiesSearchVal === '')){ //if search was inputed and query to url
-	urlActivities = activityBaseURL +=  urlActivitiesSearchParameter + urlActivitiesSearchVal;
+//if(!(urlActivitiesSearchVal === '')){ //if search was inputed and query to url
+//	urlActivities = activityBaseURL +=  urlActivitiesSearchParameter + urlActivitiesSearchVal;
 }
 
- if(!(urlActivitiesFormatParameter === '' || urlActivitiesFormatParameter === 'Example Option')){//if format was inputed and query to url
-	urlActivities = activityBaseURL  += urlActivitiesFormatParameter + urlActivitiesFormatVal;
-}
-  }
+// if(!(urlActivitiesFormatParameter === '' || urlActivitiesFormatParameter === 'Example Option')){//if format was inputed and query to url
+//	urlActivities = activityBaseURL  += urlActivitiesFormatParameter + urlActivitiesFormatVal;
+//}
+ // }
 //Note:  consider add for loop her to advance through - decide contents??  & create activities object
 //for (let i = 0; i < 5; i++) {
  //   searchActivities(); //call activities function
@@ -243,29 +249,40 @@ if(!(urlActivitiesSearchVal === '')){ //if search was inputed and query to url
   console.log(url); //show url in console
 
 function getActivities() { //function to execute fetch
-fetch(boredURL, {
+fetch(boredactivitiesURL, {//call to 
   })
    
-  .then(function(response) {
+  .then(function(response) {//first promiste statement
     return response.json(); //data info returned that is  not the values
     })
 
-    .then(function (data) {
-      console.log(data); //log data in console
+    .then(function (data) {//second promise statement
+    console.log(data); //log data in console
 	  console.log(data.activity)
 	  console.log(data.type);
 	  console.log(data.participants);
 	  console.log(data.price);
 	  console.log(data.link);
 
+  var activities = {//added 52921
+      
+      activity: data.activity,
+      type: data.type,
+      participants: data.participants,
+      price: data.price,
+      link:  data.link
+     }
+ //added 52921
+  var  activities = ["activitiesParam", "typeParam", "participantsParam", "priceParams", "linkParams" ];
+
     });
 
-      console.log("test runs");
+  console.log("test runs");
   
   }
 
 for (let i = 0; i < 5; i++) {
     getActivities(); //call activities function
- 
+
 }
 
