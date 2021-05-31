@@ -256,4 +256,4 @@ function displayMovies(){
   }
 }
 
-//searchMovies('star', '', '20');
+searchMovies('star', '', '20');
