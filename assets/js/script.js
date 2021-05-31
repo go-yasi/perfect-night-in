@@ -256,4 +256,38 @@ function displayMovies(){
   }
 }
 
-searchMovies('star', '', '20');
+var searchBtn = document.querySelector('#searchBtn');
+
+var searchMovListener = function () {
+  var userTitleInput = document.querySelector('.movTitleInput').value;
+
+  var userGenreInput = document.querySelector('.movGenreInput').value;
+  
+  if(userGenreInput === 'Select Genre'){
+    userGenreInput = '';
+  }else if(userGenreInput === 'action'){
+    userGenreInput = '4401';
+  }else if(userGenreInput === 'comedy'){
+    userGenreInput = '4404';
+  }else if(userGenreInput === 'drama'){
+    userGenreInput = '4406';
+  }else if(userGenreInput === 'horror'){
+    userGenreInput = '4408';
+  }else if(userGenreInput === 'kids'){
+    userGenreInput = '4410';
+  }else if(userGenreInput === 'romance'){
+    userGenreInput = '4412';
+  }else if(userGenreInput === 'scifi'){
+    userGenreInput = '4413';
+  }else if(userGenreInput === 'thriller'){
+    userGenreInput = '4416';
+  }
+
+  console.log(userGenreInput);
+  console.log(userTitleInput);
+
+  searchMovies(userTitleInput, userGenreInput, '20');
+};
+searchBtn.addEventListener('click', searchMovListener);
+
+//searchMovies('star', '', '20');
