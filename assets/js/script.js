@@ -3,21 +3,21 @@
 //;
 
 //replace top variables when done with these values - chgd name 52921
-var boredactivitiesURL = "https://www.boredapi.com/api/activity"
+//var boredactivitiesURL = "https://www.boredapi.com/api/activity"
 
-var activity = [];
+//var activity = [];
 
-var activityParam = "activity";
-var linkParam = "link";
-var activityBaseURL = " ";
-var urlActivities;
-var participantsParam = "participants";
-var priceParam = "price";
-var typeParam = "type";
-var urlActivitiesSearchParameter = '&q=';
-var urlActivitiesSearchVal;
-var urlActivitiesFormatParameter = '&format=';
-var urlActivitiesFormatVal;
+//var activityParam = "activity";
+//var linkParam = "link";
+//var activityBaseURL = " ";
+//var urlActivities;
+//var participantsParam = "participants";
+//var priceParam = "price";
+//var typeParam = "type";
+//var urlActivitiesSearchParameter = '&q=';
+//var urlActivitiesSearchVal;
+//var urlActivitiesFormatParameter = '&format=';
+//var urlActivitiesFormatVal;
 
 
 var searchActivitiesResults= [];
@@ -34,10 +34,14 @@ var genreParameterVal = '4413';
 var limitParameter = '&limit=';
 var limitParameterVal = '25';
 
-//var boredURL = "https://www.boredapi.com/api/activity"
-//var typeparam = 'type';
-//var participantparm = 'participants';
-//var priceparam = 'price';
+var boredURL = "https://www.boredapi.com/api/activity"
+var baseUrl = "https://www.boredapi.com/api";
+var activityParam= "activity ";
+var typeParam = "type ";
+var participantsParam = "participants ";
+var priceParam = "price ";
+var linkParam =  "link";
+var activities = [];
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
@@ -47,6 +51,45 @@ var urlIngredientsParameter = 'i=';
 var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
+
+
+function getActivities() {//request, response and loop through data
+  
+  fetch(boredURL, {
+  })
+      .then(function(response){
+      return response.json();
+      })
+  
+      .then(function (data){
+        console.log(data);
+
+        console.log("data"); 
+  
+  // statement looping through activities  
+  for (let i = 0; i < 5; i++) 
+  {
+
+    // object activities results - 5 properties
+    var activitiesResults = {
+  
+    activity: data.activity,
+    type:  data.type,
+    participants: data.participants,
+    price:  data.price,
+    link:  data.link,
+  };
+  console.log(activitiesResults);
+  
+ activities.push(activitiesResults);
+   
+}
+ });
+}
+
+getActivities();
+
+
 
 function searchApi(search, ingredients){
   // event.preventDefault();
@@ -144,24 +187,24 @@ function displayFood(){
 }
 
 
-function getActivities() {
-fetch(boredURL, {
-})
+//function getActivities() {
+//fetch(boredURL, {
+//})
 
-  .then(function(response){
-    return response.json();
-    })
-
-    .then(function (data){
+ // .then(function(response){
+ //   return response.json();
+ //   })
+//
+//    .then(function (data){
       // console.log(data);
-    });
+ //   });
 //  console.log("test runs"); 
-}
+//}
 
-for (let i = 0; i < 5; i++) {
-  getActivities();
+//for (let i = 0; i < 5; i++) {
+//  getActivities();
   
-}
+//}
 
 
 
