@@ -2,24 +2,6 @@
  //.dropdown()
 //;
 
-//replace top variables when done with these values - chgd name 52921
-//var boredactivitiesURL = "https://www.boredapi.com/api/activity"
-
-//var activity = [];
-
-//var activityParam = "activity";
-//var linkParam = "link";
-//var activityBaseURL = " ";
-//var urlActivities;
-//var participantsParam = "participants";
-//var priceParam = "price";
-//var typeParam = "type";
-//var urlActivitiesSearchParameter = '&q=';
-//var urlActivitiesSearchVal;
-//var urlActivitiesFormatParameter = '&format=';
-//var urlActivitiesFormatVal;
-
-
 var searchActivitiesResults= [];
 var resultActivitiesDisplay = document.querySelector("results");
 
@@ -70,7 +52,7 @@ function getActivities() {//request, response and loop through data
   for (let i = 0; i < 5; i++) 
   {
 
-    // object activities results - 5 properties
+    // local object named activities results - 5 properties
     var activitiesResults = {
   
     activity: data.activity,
@@ -78,15 +60,17 @@ function getActivities() {//request, response and loop through data
     participants: data.participants,
     price:  data.price,
     link:  data.link,
-  };
+  }
+  //logging data
   console.log(activitiesResults);
-  
+
+  //adding items to array
  activities.push(activitiesResults);
    
 }
  });
 }
-
+//calling function
 getActivities();
 
 
