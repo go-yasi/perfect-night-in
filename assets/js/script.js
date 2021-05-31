@@ -25,11 +25,25 @@ var resultActivitiesDisplay = document.querySelector("results");
 
 
 
+var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
+var baseSearchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?media=movie';
+var termParameter ='&term=';
+var termParameterVal = 'star+wars';
+var genreParameter = '&genreId=';
+var genreParameterVal = '4413'; 
+var limitParameter = '&limit=';
+var limitParameterVal = '25';
+
+//var boredURL = "https://www.boredapi.com/api/activity"
+//var typeparam = 'type';
+//var participantparm = 'participants';
+//var priceparam = 'price';
+
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
-
+var foodResults = [];
 var urlSearchParameter = '&q=';
-var urlIngredientsParameter = '&i=';
+var urlIngredientsParameter = 'i=';
 var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
@@ -37,8 +51,8 @@ var recipeResults;
 function searchApi(search, ingredients){
   // event.preventDefault();
 
-  urlSearchVal = document.querySelector('.search-param').value;
-  urlIngredientsVal = document.querySelector('.search-ingred').value;
+  urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
+  urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
 
 
   queryUrl = recipePuppyUrl;
@@ -74,34 +88,83 @@ function searchApi(search, ingredients){
     //  console.log(recipeResults.results[i].thumbnail);
     //  console.log('-----------');
 
-      var searchResults = {
+      var foodResult = {
         foodIngredients: recipeResults.results[i].ingredients,
         foodTitles: recipeResults.results[i].title,
         foodLinks: recipeResults.results[i].href,
-
+        foodPic: recipeResults.results[i].thumbnail,
       }
-    searchResults.push(searchResults);
-  }
- }); 
-urlIngredientsVal = '';
-urlSearchVal = '';
-//console.log(document.querySelector('.search-param').value)
-//console.log(document.querySelector('.search-ingred').value)
- // console.log(queryUrl)
+      foodResults.push(foodResult);
+    }
+    displayFood();
+  }); 
+  urlIngredientsVal = '';
+  urlSearchVal = '';
+  // console.log(document.querySelector('.search-param').value)
+  // console.log(document.querySelector('.search-ingred').value)
+  console.log(foodResults);
+  
 }
 
-function displayResult(){
+
+function displayFood(){
   
+  for (var i = 0;i < 5; i++){
+  var resultsEl = document.createElement('div');
+  resultsEl.className = 'food-result' // or which ever class you Preffer
 
-  var resultsEl = document.createElement('');
-  resultsEl.className = 'food-result'
+  var resultsTitleEl = document.createElement('h5');
+  resultsTitleEl.className = 'food-title' // or which ever class you Preffer
+  resultsTitleEl.textContent = foodResults[i].foodTitles;
 
-  var resultsIngredEl = document.createElement('');
-  resultsIngredEl.className = 'food-Ingred'
-  resultsIngredEl.textContent = searchResults.foodIngreds;
+  var resultsIngredEl = document.createElement('p');
+  resultsIngredEl.className = 'food-Ingred' // or which ever class you Preffer
+  resultsIngredEl.textContent = foodResults[i].foodIngredients;
 
-//   var ;
-};
+  var resultsLinksEl = document.createElement('a');
+  resultsLinksEl.className = 'food-links' // or which ever class you Preffer
+  resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
+  resultsLinksEl.textContent = foodResults[i].foodLinks;
+  // console.log(foodResults[i].foodLinks);
+
+  var resultsPicEl = document.createElement('img')
+  resultsPicEl.className = 'food-pic' // or which ever class you Preffer
+  resultsPicEl.src = foodResults[i].foodPic;
+  resultsPicEl.setAttribute('width', '150px')
+  resultsPicEl.setAttribute('height', '150px')
+  
+  
+  resultsEl.appendChild(resultsIngredEl);
+  resultsEl.appendChild(resultsTitleEl);
+  resultsEl.appendChild(resultsLinksEl);
+  resultsEl.appendChild(resultsPicEl);
+
+  document.body.appendChild(resultsEl);
+  }
+}
+
+
+function getActivities() {
+fetch(boredURL, {
+})
+
+  .then(function(response){
+    return response.json();
+    })
+
+    .then(function (data){
+      // console.log(data);
+    });
+//  console.log("test runs"); 
+}
+
+for (let i = 0; i < 5; i++) {
+  getActivities();
+  
+}
+
+
+
 
 
 var movies = [];
@@ -120,7 +183,7 @@ fetch(topUrl, {})
 		//console.log('top movies----------------------------------------------------------');
     	//console.log(data); 
 		for(var i = 0; i < data.feed.results.length; i++){
-		//	console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100);
+			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100.replace("200x200", "600x600"));
 
 			var movie = 
 			{
@@ -128,7 +191,7 @@ fetch(topUrl, {})
 				genre: data.feed.results[i].genres[0].name ,
 				release: data.feed.results[i].releaseDate,				
 				description: '' ,				
-				artUrl: data.feed.results[i].artworkUrl100.replace("100x100", "600x600"),
+				artUrl: data.feed.results[i].artworkUrl100.replace("200x200", "600x600"),
 				trailer: ''
 			}
 			movies.push(movie);
@@ -137,15 +200,6 @@ fetch(topUrl, {})
 }
 
 
-
-var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
-var baseSearchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?media=movie';
-var termParameter ='&term=';
-var termParameterVal = 'star+wars';
-var genreParameter = '&genreId=';
-var genreParameterVal = '4413'; 
-var limitParameter = '&limit=';
-var limitParameterVal = '25';
 
 
 function searchMovies(movTitle, movGenre, limit){
@@ -174,12 +228,12 @@ function searchMovies(movTitle, movGenre, limit){
     	//console.log(data); 
 		
 		for(var i = 0; i < data.results.length; i++){
-			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100 + ' \n: ' + data.results[i].previewUrl);
+			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
 			var movie = 
 			{
 				name: data.results[i].trackName,  
 				genre: data.results[i].primaryGenreName ,
-				release: data.results[i].releaseDate.slice(0,9),				
+				release: data.results[i].releaseDate.slice(0,10),				
 				description: data.results[i].longDescription ,					
 				artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
 				trailer: data.results[i].previewUrl
@@ -187,102 +241,41 @@ function searchMovies(movTitle, movGenre, limit){
 			movies.push(movie);
 		}
 		//console.log('-----------------------------');
+    displayMovies();
 	});
 }
 
-searchTopMovies();
-searchMovies('transformers', '', '21');
-searchApi('stew', 'beef');
 
 
 
-//Activities
+function displayMovies(){
+  //console.log(movies)
+  for(var i = 0; i < 5; i++){  
+    var movResultDivEL = document.createElement('div');
+    
 
-var activities = [];
+    var movTitleEL = document.createElement('h3');
+    movTitleEL.textContent = movies[i].name;
 
-function clearContent() { //function to clear results from previous search
-  while(resultDisplay.firstChild) {
-      resultDisplay.removeChild(resultDisplay.firstChild);
+    var movGenreEL = document.createElement('p'); 
+    movGenreEL.textContent = movies[i].genre;
+    movGenreEL.className = '';//CSS CLASS
+
+    var movDateEL = document.createElement('p'); 
+    movDateEL.textContent = movies[i].release;
+    movDateEL.className = '';//CSS CLASS
+
+    var movImgEL = document.createElement('img');
+    movImgEL.src = movies[i].artUrl;
+    movImgEL.className = ''; //CSS CLASS
+
+    movResultDivEL.appendChild(movTitleEL);
+    movResultDivEL.appendChild(movGenreEL);
+    movResultDivEL.appendChild(movDateEL);
+    movResultDivEL.appendChild(movImgEL);
+
+    document.body.appendChild(movResultDivEL); //change where its displayed
   }
 }
 
-//Activities serch function
-function searchActivities(event){ //function to be called when search button is clicked
-  event.preventDefault(); //prevent form default submit
-  clearContent(); //clear previous results from page display
-  searchActivitiesResults = []; //clear data from previous search
-
-  //console.log(document.querySelector(".activity").value); //show input value in console
-  //console.log(document.querySelector(".link'").value); //show input value in console
-  console.log(document.querySelector(".type").value); //show input value in console
-  console.log(document.querySelector(".participants").value); //show input value in console
-  console.log(document.querySelector(".price").value); //show input value in console
-  urlActivitiesSearchVal = document.querySelector(".type").value; //save search input
-  urlActivitiesSearchVal = document.querySelector(".participants").value; //save search input
-  urlActivitiesSearchVal = document.querySelector(".price").value; //save search input
-   
- 
- // urlFormatVal = document.querySelector('.select-format').value; //save format input
-
- // if(!(urlSearchVal === '')){ //if search was inputed and query to url
- //     url = boredURL + particpantsparam;
- // }
-
- // if(!(urlSearchVal === '')){ //if search was inputed and query to url
- //   url = boredURL + particpantsparam + priceparam;
-//}
-
-//if(!(urlActivitiesSearchVal === '')){ //if search was inputed and query to url
-//	urlActivities = activityBaseURL +=  urlActivitiesSearchParameter + urlActivitiesSearchVal;
-}
-
-// if(!(urlActivitiesFormatParameter === '' || urlActivitiesFormatParameter === 'Example Option')){//if format was inputed and query to url
-//	urlActivities = activityBaseURL  += urlActivitiesFormatParameter + urlActivitiesFormatVal;
-//}
- // }
-//Note:  consider add for loop her to advance through - decide contents??  & create activities object
-//for (let i = 0; i < 5; i++) {
- //   searchActivities(); //call activities function
- 
-//}  could be extra bracket
-
-  console.log(url); //show url in console
-
-function getActivities() { //function to execute fetch
-fetch(boredactivitiesURL, {//call to 
-  })
-   
-  .then(function(response) {//first promiste statement
-    return response.json(); //data info returned that is  not the values
-    })
-
-    .then(function (data) {//second promise statement
-    console.log(data); //log data in console
-	  console.log(data.activity)
-	  console.log(data.type);
-	  console.log(data.participants);
-	  console.log(data.price);
-	  console.log(data.link);
-
-  var activities = {//added 52921
-      
-      activity: data.activity,
-      type: data.type,
-      participants: data.participants,
-      price: data.price,
-      link:  data.link
-     }
- //added 52921
-  var  activities = ["activitiesParam", "typeParam", "participantsParam", "priceParams", "linkParams" ];
-
-    });
-
-  console.log("test runs");
-  
-  }
-
-for (let i = 0; i < 5; i++) {
-    getActivities(); //call activities function
-
-}
-
+//searchMovies('star', '', '20');
