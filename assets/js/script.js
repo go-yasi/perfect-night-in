@@ -34,10 +34,9 @@ var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
 
-<<<<<<< HEAD
 
-function getActivities() {//request, response and loop through data
-  
+
+function getActivities() {
   fetch(boredURL, {
   })
       .then(function(response){
@@ -47,7 +46,7 @@ function getActivities() {//request, response and loop through data
       .then(function (data){
         console.log(data);
 
-        console.log("data"); 
+       //console.log("data"); 
   
   // statement looping through activities  
   for (let i = 0; i < 5; i++) 
@@ -64,24 +63,24 @@ function getActivities() {//request, response and loop through data
   }
   //logging data
   console.log(activitiesResults);
-
+  
   //adding items to array
  activities.push(activitiesResults);
    
 }
+
  });
 }
+
 //calling function
 getActivities();
 
 
 
 function searchApi(search, ingredients){
-=======
 var startBtn = document.querySelector('.start-btn');
 
 function searchFood(search, ingredients){
->>>>>>> main
   // event.preventDefault();
 
   urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
@@ -97,6 +96,8 @@ function searchFood(search, ingredients){
     queryUrl += urlSearchParameter + urlSearchVal;
 
   }
+}
+
 
   const settings = {
     "async": true,
@@ -175,28 +176,6 @@ function displayFood(){
   document.body.appendChild(resultsEl);
   }
 }
-
-
-//function getActivities() {
-//fetch(boredURL, {
-//})
-
- // .then(function(response){
- //   return response.json();
- //   })
-//
-//    .then(function (data){
-      // console.log(data);
- //   });
-//  console.log("test runs"); 
-//}
-
-//for (let i = 0; i < 5; i++) {
-//  getActivities();
-  
-//}
-
-
 
 
 
@@ -311,12 +290,8 @@ function displayMovies(){
   }
 }
 
-<<<<<<< HEAD
-//searchMovies('star', '', '20');
-=======
 //searchMovies('star', '', '20');
 
-startBtn.addEventListener("click", function (){
-  window.location.replace('./html/search-form.html');
-})
->>>>>>> main
+//startBtn.addEventListener("click", function (){
+//  window.location.replace('./html/search-form.html');
+//})
