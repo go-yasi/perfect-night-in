@@ -19,8 +19,20 @@ body {
     height: 100vh;
 }
 
+footer {
+
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+}
+
 .footcap {
     text-align: center;
+    margin-bottom: 0;
+    font-size: 12px;
 }
 
 /* FONT — Main headings and body paragraph text */
@@ -100,6 +112,10 @@ a:hover {
 
 
 /* Cover Page */
+.cover-page-body {
+    display: flex;
+    align-items: center;
+}
 .home-intro {
     width: 60%;
     margin: 0 auto 1vw;
@@ -126,7 +142,7 @@ a:hover {
     opacity: 1;
 }
 .accordion-button {
-    border-bottom: 1px solid var(--white);
+    /* border-bottom: 1px solid var(--white); */
     padding-bottom: 0;
     padding-left: 0;
     padding-top: 1.25rem;
@@ -174,8 +190,26 @@ a:hover {
     margin-top: 2vw;
 }
 
+.modal-dialog p, .modal-header h5 {
+    color: var(--black);
+}
 
+.modal-header, .modal-footer {
+    border-color: var(--gray);
+}
 
+.modal-btn {
+    cursor: pointer;
+}
+
+.modal-content {
+    border-radius: 0;
+    background-color: var(--white);
+}
+
+.modal-body {
+    padding: 2em 3em;
+}
 
 
 

@@ -17,154 +17,191 @@
     <title>Let's Plan!</title>
 </head>
 <body>
-    <!-- Home Page -->
-  <div class="container cover-page text-center">
-    <div class="row align-items-center">
-      <div class="col-12">
-        <h1>Perfect Night In</h1>
-        <div class="instructions">
-          <p>
-            Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. 
-            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Search Form -->
-  <div class="container search-form">
-    <div class="row">
-      <!-- All Accordions -->
-      <div class="accordion" id="accordionPanelsStayOpenExample">
-
-        <!-- Food Accordion -->
-        <div class="accordion-item search-food">
-          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-              <!-- Header with Checkbox -->
-              <h4>Food</h4>
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-            <div class="accordion-body">
-              <!-- Search by Dish -->
-              <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by dish: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="colFormLabel" placeholder="">
+    <!-- Instructions -->
+    <div class="container instructions-container text-center">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <h1>Perfect Night In</h1>
+                <div class="instructions">
+                    <p>
+                    Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. 
+                    Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                    </p>
                 </div>
-              </div>
-              <!-- Search by Ingredient -->
-              <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by ingredient: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="colFormLabel" placeholder="">
-                </div>
-              </div>
             </div>
-          </div>
         </div>
+    </div>
 
-        <!-- Movies Accordion -->
-        <div class="accordion-item search-movies">
-          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-              <!-- Header with Checkbox -->
-              <h4>Movies</h4>
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-            <div class="accordion-body">
-              <!-- Search by genre -->
-              <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by genre: </label>
-                <div class="col-sm-10">
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Select Genre</option>
-                    <option value="action">Action & Adventure</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="drama">Drama</option>
-                    <option value="horror">Horror</option>
-                    <option value="kids">Kids & Family</option>
-                    <option value="romance">Romance</option>
-                    <option value="scifi">Sci-Fi & Fantasty</option>
-                    <option value="thriller">Thriller</option>
-                  </select>
+    <!-- Search Form -->
+    <div class="container search-form-container">
+        <div class="row">
+            <!-- All Accordions -->
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+
+                <!-- Food Accordion -->
+                <div class="accordion-item search-food">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <h4>Food</h4>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <!-- Search by Dish -->
+                            <div class="row mb-3">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by dish: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="colFormLabel" placeholder="">
+                                </div>
+                            </div>
+                            <!-- Search by Ingredient -->
+                            <div class="row mb-3">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by ingredient: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="colFormLabel" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <!-- Search by Title -->
-              <div class="row mb-3">
-                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by title: </label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="colFormLabel" placeholder="">
-                </div>
-              </div>
-          </div>
+
+                <!-- Movies Accordion -->
+                <div class="accordion-item search-movies">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                        <h4>Movies</h4>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <!-- Search by genre -->
+                            <div class="row mb-3">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by genre: </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select Genre</option>
+                                        <option value="action">Action & Adventure</option>
+                                        <option value="comedy">Comedy</option>
+                                        <option value="drama">Drama</option>
+                                        <option value="horror">Horror</option>
+                                        <option value="kids">Kids & Family</option>
+                                        <option value="romance">Romance</option>
+                                        <option value="scifi">Sci-Fi & Fantasty</option>
+                                        <option value="thriller">Thriller</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Search by Title -->
+                            <div class="row mb-3">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Search by title: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="colFormLabel" placeholder="">
+                                </div>
+                            </div>
+                            <!-- Top 10 -->
+                            <div>
+                                <p><em>Not sure what to search? <a class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Click here</a> to see the top 10 highest rated movies.</em></p>
+                            </div>
+                            <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Top 10 Streaming Movies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
-        <!-- Activities Accordion -->
-        <div class="accordion-item search-activities">
-          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-              <!-- Header with Checkbox -->
-              <h4>Activities</h4>
-            </button>
-          </h2>
-          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-            <div class="accordion-body">
-              <!-- Select Type -->
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Select activity type</option>
-                <option value="education">Education</option>
-                <option value="recreational">Recreational</option>
-                <option value="social">Social</option>
-                <option value="diy">DIY</option>
-                <option value="charity">Charity</option>
-                <option value="cooking">Cooking</option>
-                <option value="relax">Relaxation</option>
-                <option value="music">Music</option>
-                <option value="busywork">Busywork</option>
-              </select>
-              <!-- Select Participants -->
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Select number of participants</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6+">6+</option>
-              </select>
-              <!-- Select Price Range -->
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Select price range</option>
-                <option value="free">Free</option>
-                <option value="$">$</option>
-                <option value="$$">$$</option>
-              </select>
-          </div>
+        <div class="modal-body">
+          <p>This is some placeholder content to show a vertically centered modal. 
+              We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. 
+              We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. 
+              When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.
+              Just like that.
+              This is some placeholder content to show a vertically centered modal. 
+              We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. 
+              We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. 
+              When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.
+              Just like that.
+              This is some placeholder content to show a vertically centered modal. 
+              We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. 
+              We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. 
+              When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.
+              Just like that.
+              This is some placeholder content to show a vertically centered modal. 
+              We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. 
+              We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. 
+              When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.
+              Just like that.
+            </p>
+        </div>
+        <div class="modal-footer">
+
         </div>
       </div>
     </div>
   </div>
-  <!-- End all Accordions -->
-  <button class="search-btn btn">Plan My Night</button>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Activities Accordion -->
+                <div class="accordion-item search-activities">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        <!-- Header with Checkbox -->
+                        <h4>Activities</h4>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            <!-- Select Type -->
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select activity type</option>
+                                <option value="education">Education</option>
+                                <option value="recreational">Recreational</option>
+                                <option value="social">Social</option>
+                                <option value="diy">DIY</option>
+                                <option value="charity">Charity</option>
+                                <option value="cooking">Cooking</option>
+                                <option value="relax">Relaxation</option>
+                                <option value="music">Music</option>
+                                <option value="busywork">Busywork</option>
+                            </select>
+                            <!-- Select Participants -->
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select number of participants</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6+">6+</option>
+                            </select>
+                            <!-- Select Price Range -->
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select price range</option>
+                                <option value="free">Free</option>
+                                <option value="$">$</option>
+                                <option value="$$">$$</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="search-btn btn">Plan My Night</button>
+    </div>
+    
 
-
-
-
-
-
-  <!-- Footer -->
-  <footer class="footer">
+<!-- Footer -->
+<footer class="footer">
     <h6 class="footcap">
-      Developed by <a href="https://github.com/joshuagalvez11" target="_blank">Joshua 🍩</a>, <a href="https://github.com/sclo00ps" target="_blank">Lougine 🦞</a>, <a href="https://github.com/AyoTai" target="_blank">Tai 🍣,</a>, and <a href="https://github.com/go-yasi" target="_blank">Yasi 🍕</a>
+    Developed by <a href="https://github.com/joshuagalvez11" target="_blank">Joshua 🍩</a>, <a href="https://github.com/sclo00ps" target="_blank">Lougine 🦞</a>, <a href="https://github.com/AyoTai" target="_blank">Tai 🍣,</a>, and <a href="https://github.com/go-yasi" target="_blank">Yasi 🍕</a>
     </h6>
-  </footer>
+</footer>
 
 
   <!-- Bootstrap & Popper Script -->
