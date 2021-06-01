@@ -124,14 +124,15 @@ function getActivities() {
         activities.push(activitiesResults);
 
 
-        // calling display function
-        displayActivities();
+       
 
       });
 
   }
   console.log(activities);
-    
+  
+  var timeout = setTimeout(displayActivities,5000); // calling display function
+  
 }
 
 //calling function
@@ -145,24 +146,24 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
-    activityactivityEL.textContent = activities[0].activity;
+    activityactivityEL.textContent = activities[i].activity;
 
     var activitytypeEL = document.createElement('p');
     activitytypeEL.className = " "; //CSS Class 
-    activitytypeEL.textContent = activities[0].type;
+    activitytypeEL.textContent = activities[i].type;
 
     var activityparticipantEL = document.createElement('p');
     activityparticipantEL.className = " "; //CSS Class 
-    activityparticipantEL.textContent = activities[0].participant;
+    activityparticipantEL.textContent = activities[i].participant;
 
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
-    activitypriceEL.textContent = activities[0].price;
+    activitypriceEL.textContent = activities[i].price;
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
-    activitylinkEL.textContent = activities[0].link;
+    activitylinkEL.textContent = activities[i].link;
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
