@@ -85,6 +85,7 @@ function getActivities() {
         //adding items to array
         activities.push(activitiesResults);
 
+
         // calling display function
         displayActivities();
 
@@ -140,8 +141,10 @@ function displayActivities() {
 //function searchApi(search, ingredients) {
 //  var startBtn = document.querySelector('.start-btn');
 
+
   function searchFood(search, ingredients) {
     // event.preventDefault();
+
 
     //urlSearchVal = document.querySelector('.search-param').value.replace(" ", "");
     //urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",");
@@ -154,6 +157,7 @@ function displayActivities() {
     
     foodResults = [];
 
+
     if (urlIngredientsVal) {
       queryUrl += urlIngredientsParameter + urlIngredientsVal;
     }
@@ -161,7 +165,7 @@ function displayActivities() {
       queryUrl += urlSearchParameter + urlSearchVal;
 
     }
-  
+
 
 
   const settings = {
@@ -426,3 +430,4 @@ if(document.title === 'This is Your Perfect Night In'){
   console.log('results page');
   searchResults();
 }
+
