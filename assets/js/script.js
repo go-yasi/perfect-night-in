@@ -227,7 +227,7 @@ function displayFood() {
     var resultsLinksEl = document.createElement('a');
     resultsLinksEl.className = 'food-links' // or which ever class you Preffer
     resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
-    resultsLinksEl.textContent = foodResults[i].foodLinks;
+    resultsLinksEl.textContent = "View Recipe";
     // console.log(foodResults[i].foodLinks);
 
     var resultsPicEl = document.createElement('img')
