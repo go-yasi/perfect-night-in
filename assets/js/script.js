@@ -35,6 +35,32 @@ var urlSearchVal;
 var recipeResults;
 
 
+function SearchActivities(activity, type, participants, price, link) {
+    var boredURL = baseUrl;
+
+    if (activity){
+      boredURL += activityParam + activity;    
+    }
+    
+    if (type){
+      boredURL += typeParam + type;  
+    }
+    if (participants){
+      boredURL += participantsParam + participants;  
+    }
+    if (price){
+      boredURL += priceParam + price;  
+    }
+    if (link){
+      boredURL += linkParam + link;  
+    }
+}
+
+for (var i = 0; i<5; i++){
+
+}
+
+
 
 function getActivities() {
   fetch(boredURL, {
@@ -74,6 +100,7 @@ function getActivities() {
 
 //calling function
 getActivities();
+
 
 
 
