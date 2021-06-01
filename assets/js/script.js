@@ -295,10 +295,9 @@ function displayFood() {
     resultsPicEl.setAttribute('width', '150px');
     resultsPicEl.setAttribute('height', '150px');
 
-
+    resultsEl.appendChild(resultsPicEl);
     resultsEl.appendChild(resultsTitleEl);
     resultsEl.appendChild(resultsIngredEl);
-    resultsEl.appendChild(resultsPicEl);
     resultsEl.appendChild(resultsLinksEl);
 
     document.querySelector("#food-div").appendChild(resultsEl);
@@ -392,27 +391,28 @@ function displayMovies() {
   //console.log(movies)
   for (var i = 0; i < 5; i++) {
     var movResultDivEL = document.createElement('div');
+    movResultDivEL.className = 'movie-result';
 
-
-    var movTitleEL = document.createElement('h3');
+    var movTitleEL = document.createElement('h5');
     movTitleEL.textContent = movies[i].name;
+    movTitleEL.className = 'movie-title';
 
     var movGenreEL = document.createElement('p');
     movGenreEL.textContent = movies[i].genre;
-    movGenreEL.className = '';//CSS CLASS
+    movGenreEL.className = 'movie-genre';//CSS CLASS
 
     var movDateEL = document.createElement('p');
     movDateEL.textContent = movies[i].release;
-    movDateEL.className = '';//CSS CLASS
+    movDateEL.className = 'movie-date';//CSS CLASS
 
     var movImgEL = document.createElement('img');
     movImgEL.src = movies[i].artUrl;
-    movImgEL.className = ''; //CSS CLASS
+    movImgEL.className = 'movie-poster'; //CSS CLASS
 
+    movResultDivEL.appendChild(movImgEL);
     movResultDivEL.appendChild(movTitleEL);
     movResultDivEL.appendChild(movGenreEL);
     movResultDivEL.appendChild(movDateEL);
-    movResultDivEL.appendChild(movImgEL);
 
     document.querySelector("#movie-div").appendChild(movResultDivEL); //change where its displayed
   }
@@ -451,6 +451,7 @@ var searchMovListener = function () {
 };
 
 function clickSearch(){
+  console.log("yay!");
   window.location.replace('../html/results.html');
   console.log('hi');
 
