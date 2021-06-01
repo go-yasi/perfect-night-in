@@ -1,28 +1,28 @@
- //$('select.dropdown')
- //.dropdown()
+//$('select.dropdown')
+//.dropdown()
 //;
 
-var searchActivitiesResults= [];
+var searchActivitiesResults = [];
 var resultActivitiesDisplay = document.querySelector("results");
 
 
 
 var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
 var baseSearchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?media=movie';
-var termParameter ='&term=';
+var termParameter = '&term=';
 var termParameterVal = 'star+wars';
 var genreParameter = '&genreId=';
-var genreParameterVal = '4413'; 
+var genreParameterVal = '4413';
 var limitParameter = '&limit=';
 var limitParameterVal = '25';
 
 var boredURL = "https://www.boredapi.com/api/activity"
 var baseUrl = "https://www.boredapi.com/api";
-var activityParam= "activity ";
-var typeParam = "type ";
-var participantsParam = "participants ";
-var priceParam = "price ";
-var linkParam =  "link";
+var activityParam = "activity";
+var typeParam = "type";
+var participantsParam = "participants";
+var priceParam = "price";
+var linkParam = "link";
 var activities = [];
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
@@ -35,95 +35,109 @@ var urlSearchVal;
 var recipeResults;
 
 
-function SearchActivities(activity, type, participants, price, link) {
-    var boredURL = baseUrl;
-
-    if (activity){
-      boredURL += activityParam + activity;    
-    }
-    
-    if (type){
-      boredURL += typeParam + type;  
-    }
-    if (participants){
-      boredURL += participantsParam + participants;  
-    }
-    if (price){
-      boredURL += priceParam + price;  
-    }
-    if (link){
-      boredURL += linkParam + link;  
-    }
-}
-
-for (var i = 0; i<5; i++){
-
-}
-
-
-
 function getActivities() {
-  fetch(boredURL, {
-  })
-      .then(function(response){
-      return response.json();
-      })
-  
-      .then(function (data){
-        console.log(data);
 
-       //console.log("data"); 
-  
   // statement looping through activities  
-  for (let i = 0; i < 5; i++) 
-  {
+  for (let i = 0; i < 5; i++) {
+    fetch(boredURL, {
+    })
+      .then(function (response) {
+        return response.json();
+      })
 
-    // local object named activities results - 5 properties
-    var activitiesResults = {
-  
-    activity: data.activity,
-    type:  data.type,
-    participants: data.participants,
-    price:  data.price,
-    link:  data.link,
-  }
-  //logging data
-  console.log(activitiesResults);
-  
-  //adding items to array
- activities.push(activitiesResults);
+      .then(function (data) {
+        //console.log(data);
+
+        //console.log("data");
+
+
+        // local object named activities results - 5 properties
+        var activitiesResults = {
+
+          activity: data.activity,
+          type: data.type,
+          participants: data.participants,
+          price: data.price,
+          link: data.link,
+        }
+        //logging data
+        console.log(activitiesResults);
+
+        //adding items to array
+        activities.push(activitiesResults);
+
+        // calling display function
+        displayActivities();
+
+      });
    
-}
+  }
 
- });
 }
 
 //calling function
 getActivities();
 
+//create a contaiauber for the display
+function displayActivities() {
 
+  for (var i = 0; i < 5; i++) {
+    var activityResultsEL = document.createElement('div');
 
+    var activityactivityEL = document.createElement('p');
+    activityactivityEL.className = " "; //CSS Class 
+    activityactivityEL.textContent = activities.activity;
 
-function searchApi(search, ingredients){
-var startBtn = document.querySelector('.start-btn');
+    var activitytypeEL = document.createElement('p');
+    activitytypeEL.className = " "; //CSS Class 
+    activitytypeEL.textContent = activities.type;
 
-function searchFood(search, ingredients){
-  // event.preventDefault();
+    var activityparticipantEL = document.createElement('p');
+    activityparticipantEL.className = " "; //CSS Class 
+    activityparticipantEL.textContent = activities.participant;
 
-  urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
-  urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+    var activitypriceEL = document.createElement('p');
+    activitypriceEL.className = " "; //CSS Class 
+    activitypriceEL.textContent = activities.price;
 
+    var activitylinkEL = document.createElement('a');
+    activitylinkEL.className = " "; //CSS Class 
+    activitylinkEL.setAttribute = ("href", activities.link);
+    activitylinkEL.textContent = activities.link;
+    //console.log(activities.link);
 
-  queryUrl = recipePuppyUrl;
+    activityResultsEL.appendChild(activityactivityEL);
+    activityResultsEL.appendChild(activitytypeEL);
+    activityResultsEL.appendChild(activityparticipantEL);
+    activityResultsEL.appendChild(activitypriceEL);
+    activityResultsEL.appendChild(activitylinkEL);
 
-  if (urlIngredientsVal){
-    queryUrl += urlIngredientsParameter + urlIngredientsVal;
-  }
-  if (urlSearchVal){
-    queryUrl += urlSearchParameter + urlSearchVal;
+    document.body.appendChild(activityResultsEL);
 
   }
 }
+
+
+function searchApi(search, ingredients) {
+  var startBtn = document.querySelector('.start-btn');
+
+  function searchFood(search, ingredients) {
+    // event.preventDefault();
+
+    urlSearchVal = document.querySelector('.search-param').value.replace(" ", "");
+    urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",");
+
+
+    queryUrl = recipePuppyUrl;
+
+    if (urlIngredientsVal) {
+      queryUrl += urlIngredientsParameter + urlIngredientsVal;
+    }
+    if (urlSearchVal) {
+      queryUrl += urlSearchParameter + urlSearchVal;
+
+    }
+  }
 
 
   const settings = {
@@ -134,20 +148,20 @@ function searchFood(search, ingredients){
 
     "method": "GET",
     "headers": {
-        "x-rapidapi-key": "e76ab8933bmshcae33a8866e9a33p11278djsn85f0c5eca5f8",
-        "x-rapidapi-host": "recipe-puppy.p.rapidapi.com"
+      "x-rapidapi-key": "e76ab8933bmshcae33a8866e9a33p11278djsn85f0c5eca5f8",
+      "x-rapidapi-host": "recipe-puppy.p.rapidapi.com"
     }
   };
   $.ajax(settings).done(function (response) {
     // console.log(JSON.parse(response));
     recipeResults = JSON.parse(response);
     //console.log(recipeResults);
-    for (var i = 0;i < 5; i++){
-    //  console.log(recipeResults.results[i].ingredients);
-    //  console.log(recipeResults.results[i].title);
-    //  console.log(recipeResults.results[i].href);
-    //  console.log(recipeResults.results[i].thumbnail);
-    //  console.log('-----------');
+    for (var i = 0; i < 5; i++) {
+      //  console.log(recipeResults.results[i].ingredients);
+      //  console.log(recipeResults.results[i].title);
+      //  console.log(recipeResults.results[i].href);
+      //  console.log(recipeResults.results[i].thumbnail);
+      //  console.log('-----------');
 
       var foodResult = {
         foodIngredients: recipeResults.results[i].ingredients,
@@ -158,49 +172,49 @@ function searchFood(search, ingredients){
       foodResults.push(foodResult);
     }
     displayFood();
-  }); 
+  });
   urlIngredientsVal = '';
   urlSearchVal = '';
   // console.log(document.querySelector('.search-param').value)
   // console.log(document.querySelector('.search-ingred').value)
   console.log(foodResults);
-  
+
 }
 
 
-function displayFood(){
-  
-  for (var i = 0;i < 5; i++){
-  var resultsEl = document.createElement('div');
-  resultsEl.className = 'food-result' // or which ever class you Preffer
+function displayFood() {
 
-  var resultsTitleEl = document.createElement('h5');
-  resultsTitleEl.className = 'food-title' // or which ever class you Preffer
-  resultsTitleEl.textContent = foodResults[i].foodTitles;
+  for (var i = 0; i < 5; i++) {
+    var resultsEl = document.createElement('div');
+    resultsEl.className = 'food-result' // or which ever class you Preffer
 
-  var resultsIngredEl = document.createElement('p');
-  resultsIngredEl.className = 'food-Ingred' // or which ever class you Preffer
-  resultsIngredEl.textContent = foodResults[i].foodIngredients;
+    var resultsTitleEl = document.createElement('h5');
+    resultsTitleEl.className = 'food-title' // or which ever class you Preffer
+    resultsTitleEl.textContent = foodResults[i].foodTitles;
 
-  var resultsLinksEl = document.createElement('a');
-  resultsLinksEl.className = 'food-links' // or which ever class you Preffer
-  resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
-  resultsLinksEl.textContent = foodResults[i].foodLinks;
-  // console.log(foodResults[i].foodLinks);
+    var resultsIngredEl = document.createElement('p');
+    resultsIngredEl.className = 'food-Ingred' // or which ever class you Preffer
+    resultsIngredEl.textContent = foodResults[i].foodIngredients;
 
-  var resultsPicEl = document.createElement('img')
-  resultsPicEl.className = 'food-pic' // or which ever class you Preffer
-  resultsPicEl.src = foodResults[i].foodPic;
-  resultsPicEl.setAttribute('width', '150px')
-  resultsPicEl.setAttribute('height', '150px')
-  
-  
-  resultsEl.appendChild(resultsIngredEl);
-  resultsEl.appendChild(resultsTitleEl);
-  resultsEl.appendChild(resultsLinksEl);
-  resultsEl.appendChild(resultsPicEl);
+    var resultsLinksEl = document.createElement('a');
+    resultsLinksEl.className = 'food-links' // or which ever class you Preffer
+    resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
+    resultsLinksEl.textContent = foodResults[i].foodLinks;
+    // console.log(foodResults[i].foodLinks);
 
-  document.body.appendChild(resultsEl);
+    var resultsPicEl = document.createElement('img')
+    resultsPicEl.className = 'food-pic' // or which ever class you Preffer
+    resultsPicEl.src = foodResults[i].foodPic;
+    resultsPicEl.setAttribute('width', '150px')
+    resultsPicEl.setAttribute('height', '150px')
+
+
+    resultsEl.appendChild(resultsIngredEl);
+    resultsEl.appendChild(resultsTitleEl);
+    resultsEl.appendChild(resultsLinksEl);
+    resultsEl.appendChild(resultsPicEl);
+
+    document.body.appendChild(resultsEl);
   }
 }
 
@@ -211,96 +225,96 @@ var movies = [];
 
 var topUrl = 'https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/25/explicit.json';
 
-function searchTopMovies(){
+function searchTopMovies() {
 
-fetch(topUrl, {})
-.then(function (response) {
-	
-    	return response.json();
- 	})
-	.then(function (data) {
-		//console.log('top movies----------------------------------------------------------');
-    	//console.log(data); 
-		for(var i = 0; i < data.feed.results.length; i++){
-			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100.replace("200x200", "600x600"));
+  fetch(topUrl, {})
+    .then(function (response) {
 
-			var movie = 
-			{
-				name: data.feed.results[i].name,  
-				genre: data.feed.results[i].genres[0].name ,
-				release: data.feed.results[i].releaseDate,				
-				description: '' ,				
-				artUrl: data.feed.results[i].artworkUrl100.replace("200x200", "600x600"),
-				trailer: ''
-			}
-			movies.push(movie);
-		}
-	});
+      return response.json();
+    })
+    .then(function (data) {
+      //console.log('top movies----------------------------------------------------------');
+      //console.log(data); 
+      for (var i = 0; i < data.feed.results.length; i++) {
+        console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100.replace("200x200", "600x600"));
+
+        var movie =
+        {
+          name: data.feed.results[i].name,
+          genre: data.feed.results[i].genres[0].name,
+          release: data.feed.results[i].releaseDate,
+          description: '',
+          artUrl: data.feed.results[i].artworkUrl100.replace("200x200", "600x600"),
+          trailer: ''
+        }
+        movies.push(movie);
+      }
+    });
 }
 
 
 
 
-function searchMovies(movTitle, movGenre, limit){
-	var searchUrl = baseSearchUrl;
+function searchMovies(movTitle, movGenre, limit) {
+  var searchUrl = baseSearchUrl;
 
-	if(movTitle){
-		searchUrl +=  termParameter + movTitle;
-	}else{
-		searchUrl +=  termParameter + 'movie';
-	}
-	if(movGenre){
-		searchUrl += genreParameter + movGenre;
-	}
-	if(limit){
-		searchUrl += limitParameter + limit;
-	}
-	//console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
-	//console.log(searchUrl);
+  if (movTitle) {
+    searchUrl += termParameter + movTitle;
+  } else {
+    searchUrl += termParameter + 'movie';
+  }
+  if (movGenre) {
+    searchUrl += genreParameter + movGenre;
+  }
+  if (limit) {
+    searchUrl += limitParameter + limit;
+  }
+  //console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
+  //console.log(searchUrl);
 
-	fetch(searchUrl, {})
-	.then(function (response) {
-	
-    	return response.json();
- 	})
-	.then(function (data) {
-    	//console.log(data); 
-		
-		for(var i = 0; i < data.results.length; i++){
-			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
-			var movie = 
-			{
-				name: data.results[i].trackName,  
-				genre: data.results[i].primaryGenreName ,
-				release: data.results[i].releaseDate.slice(0,10),				
-				description: data.results[i].longDescription ,					
-				artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
-				trailer: data.results[i].previewUrl
-			}
-			movies.push(movie);
-		}
-		//console.log('-----------------------------');
-    displayMovies();
-	});
+  fetch(searchUrl, {})
+    .then(function (response) {
+
+      return response.json();
+    })
+    .then(function (data) {
+      //console.log(data); 
+
+      for (var i = 0; i < data.results.length; i++) {
+        //console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
+        var movie =
+        {
+          name: data.results[i].trackName,
+          genre: data.results[i].primaryGenreName,
+          release: data.results[i].releaseDate.slice(0, 10),
+          description: data.results[i].longDescription,
+          artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
+          trailer: data.results[i].previewUrl
+        }
+        movies.push(movie);
+      }
+      //console.log('-----------------------------');
+      displayMovies();
+    });
 }
 
 
 
 
-function displayMovies(){
+function displayMovies() {
   //console.log(movies)
-  for(var i = 0; i < 5; i++){  
+  for (var i = 0; i < 5; i++) {
     var movResultDivEL = document.createElement('div');
-    
+
 
     var movTitleEL = document.createElement('h3');
     movTitleEL.textContent = movies[i].name;
 
-    var movGenreEL = document.createElement('p'); 
+    var movGenreEL = document.createElement('p');
     movGenreEL.textContent = movies[i].genre;
     movGenreEL.className = '';//CSS CLASS
 
-    var movDateEL = document.createElement('p'); 
+    var movDateEL = document.createElement('p');
     movDateEL.textContent = movies[i].release;
     movDateEL.className = '';//CSS CLASS
 
