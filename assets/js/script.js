@@ -335,7 +335,7 @@ function displayMovies() {
     var movResultDivEL = document.createElement('div');
 
 
-    var movTitleEL = document.createElement('h3');
+    var movTitleEL = document.createElement('h5');
     movTitleEL.textContent = movies[i].name;
 
     var movGenreEL = document.createElement('p');
@@ -393,7 +393,7 @@ var searchMovListener = function () {
 
 function clickSearch(){
   console.log("yay!");
-  // window.location.replace('../html/results.html');
+  window.location.replace('../html/results.html');
   console.log('hi');
 
   searchMovListener();
