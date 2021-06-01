@@ -26,16 +26,33 @@ var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
 
-var startBtn = document.querySelector('.start-btn');
+var userInputs = ['', '', '', '', '', '', ''];
+
+var foodDivEL = document.querySelector('#food-div');
+var movieDivEL = document.querySelector('#movie-div');
+
+function clearContent(clear) { //function to clear results from previous search
+  while(clear.firstChild) {
+      clear.removeChild(clear.firstChild);
+  }
+}
+
+function getFoodParams(){
+  userInputs[0] = document.querySelector('.search-param').value.replace(" ", "") ;
+  userInputs[1] = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+}
 
 function searchFood(search, ingredients){
   // event.preventDefault();
 
-  urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
-  urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+  //urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
+  //urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+  urlSearchVal = search;
+  urlIngredientsVal = ingredients;
 
 
   queryUrl = recipePuppyUrl;
+  foodResults = [];
 
   if (urlIngredientsVal){
     queryUrl += urlIngredientsParameter + urlIngredientsVal;
@@ -62,11 +79,11 @@ function searchFood(search, ingredients){
     recipeResults = JSON.parse(response);
     console.log(recipeResults);
     for (var i = 0;i < 5; i++){
-      console.log(recipeResults.results[i].ingredients);
+      /*console.log(recipeResults.results[i].ingredients);
       console.log(recipeResults.results[i].title);
       console.log(recipeResults.results[i].href);
       console.log(recipeResults.results[i].thumbnail);
-      console.log('-----------');
+      console.log('-----------');*/
 
       var foodResult = {
         foodIngredients: recipeResults.results[i].ingredients,
@@ -146,7 +163,6 @@ for (let i = 0; i < 5; i++) {
 
 
 
-
 var movies = [];
 
 
@@ -184,6 +200,7 @@ function searchTopMovies(){
 
 function searchMovies(movTitle, movGenre, limit){
 	var searchUrl = baseSearchUrl;
+  movies = [];
 
 	if(movTitle){
 		searchUrl +=  termParameter + movTitle;
@@ -214,7 +231,7 @@ function searchMovies(movTitle, movGenre, limit){
 				name: data.results[i].trackName,  
 				genre: data.results[i].primaryGenreName ,
 				release: data.results[i].releaseDate.slice(0,10),				
-				description: data.results[i].longDescription ,					
+				//description: data.results[i].longDescription ,					
 				artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
 				trailer: data.results[i].previewUrl
 			}
@@ -229,7 +246,7 @@ function searchMovies(movTitle, movGenre, limit){
 
 
 function displayMovies(){
-  //console.log(movies)
+  console.log(movies)
   for(var i = 0; i < 5; i++){  
     var movResultDivEL = document.createElement('div');
     
@@ -285,15 +302,46 @@ var searchMovListener = function () {
     userGenreInput = '4416';
   }
 
-  console.log(userGenreInput);
-  console.log(userTitleInput);
 
-  searchMovies(userTitleInput, userGenreInput, '20');
+  userInputs[2] = userGenreInput;
+  userInputs[3] = userTitleInput;
 };
-searchBtn.addEventListener('click', searchMovListener);
 
-//searchMovies('star', '', '20');
+function clickSearch(){
+  window.location.replace('../html/results.html');
+  console.log('hi');
 
-startBtn.addEventListener("click", function (){
-  window.location.replace('./html/search-form.html');
-})
+  searchMovListener();
+  getFoodParams();
+
+  console.log('movies:');
+  console.log(movies);
+  //console.log(movies.length);
+  console.log('foods:');
+  console.log(foodResults);
+  //console.log(foodResults.length);
+  console.log(userInputs);
+
+
+  console.log(JSON.stringify(movies));
+
+
+  localStorage.setItem('inputs', JSON.stringify(userInputs));
+
+}
+
+function searchResults(){
+  userInputs = JSON.parse(localStorage.getItem('inputs'));
+  searchFood(userInputs[0], userInputs[1]);
+  searchMovies(userInputs[3], userInputs[2], '20');
+}
+
+if(document.title === 'Let\'s Plan!'){
+  searchBtn.addEventListener('click', clickSearch);
+  console.log('form page');
+}
+
+if(document.title === 'This is Your Perfect Night In'){
+  console.log('results page');
+  searchResults();
+}
