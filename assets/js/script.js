@@ -16,14 +16,15 @@ var genreParameterVal = '4413';
 var limitParameter = '&limit=';
 var limitParameterVal = '25';
 
-var boredURL = "https://www.boredapi.com/api/activity"
-var baseUrl = "https://www.boredapi.com/api";
+var boredUrl = "";
+var baseUrl = "https://www.boredapi.com/api/activity/?";
 var activityParam = "activity";
-var typeParam = "type";
-var participantsParam = "participants";
-var priceParam = "price";
+var typeParam = "&type=";
+var participantsParam = "&participants=";
+var priceParam = "&maxprice=";
 var linkParam = "link";
 var activities = [];
+
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
@@ -50,8 +51,45 @@ function getFoodParams(){
   userInputs[1] = document.querySelector('.search-ingred').value.replace(" ", ",") ;
 }
 
-function getActivities() {
 
+function getActivitiesParams(){
+  userInputs[4] = document.querySelector('.activity-type').value;
+  userInputs[5] = document.querySelector('.activity-participants').value;
+  userInputs[6] = document.querySelector('.activity-price').value;
+
+ if (userInputs[6] ==="free"){
+   userInputs[6] = 0;
+ }
+ if (userInputs[6] ==="$"){
+  userInputs[6] = .5;
+ }
+ if (userInputs[6] ==="$$"){
+  userInputs[6] = 1;
+ }
+ if (userInputs[6] ==="Select price range"){
+  userInputs[6] = 1;
+ } 
+}
+ 
+
+
+function searchActivities(activType, activParticipants, activPrice){
+ boredURL = baseUrl;
+
+  if (activType) {
+    boredURL += typeParam + activType;
+  }
+  if (activParticipants) {
+    boredURL += participantsParam + activParticipants;
+}
+if (activPrice) {
+   boredURL += priceParam + activPrice;
+}
+console.log(boredURL);
+}
+
+function getActivities() {
+    searchActivities(userInputs[4], userInputs[5],userInputs[6]);
   // statement looping through activities  
   for (let i = 0; i < 5; i++) {
     fetch(boredURL, {
@@ -92,11 +130,12 @@ function getActivities() {
       });
 
   }
-
+  console.log(activities);
+    
 }
 
 //calling function
-getActivities();
+//getActivities();
 
 //create a contaiauber for the display
 function displayActivities() {
@@ -106,24 +145,24 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
-    activityactivityEL.textContent = activities.activity;
+    activityactivityEL.textContent = activities[0].activity;
 
     var activitytypeEL = document.createElement('p');
     activitytypeEL.className = " "; //CSS Class 
-    activitytypeEL.textContent = activities.type;
+    activitytypeEL.textContent = activities[0].type;
 
     var activityparticipantEL = document.createElement('p');
     activityparticipantEL.className = " "; //CSS Class 
-    activityparticipantEL.textContent = activities.participant;
+    activityparticipantEL.textContent = activities[0].participant;
 
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
-    activitypriceEL.textContent = activities.price;
+    activitypriceEL.textContent = activities[0].price;
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
-    activitylinkEL.textContent = activities.link;
+    activitylinkEL.textContent = activities[0].link;
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
@@ -397,6 +436,7 @@ function clickSearch(){
 
   searchMovListener();
   getFoodParams();
+  getActivitiesParams();
 
   console.log('movies:');
   console.log(movies);
@@ -419,6 +459,7 @@ function searchResults(){
   console.log(userInputs);
   searchFood(userInputs[0], userInputs[1]);
   searchMovies(userInputs[3], userInputs[2], '20');
+  getActivities();
 }
 
 if(document.title === 'Let\'s Plan!'){
