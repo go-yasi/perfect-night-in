@@ -274,6 +274,9 @@ function displayFood() {
     resultsPicEl.src = foodResults[i].foodPic;
     resultsPicEl.setAttribute('width', '150px');
     resultsPicEl.setAttribute('height', '150px');
+    if (foodResults[i].foodPic === ""){
+      resultsPicEl.src = "../assets/images/good-food.jpeg"
+    }
 
     resultsEl.appendChild(resultsPicEl);
     resultsEl.appendChild(resultsTitleEl);
