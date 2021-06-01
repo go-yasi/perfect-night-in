@@ -1,6 +1,10 @@
-// $('select.dropdown')
-//   .dropdown()
-// ;
+ //$('select.dropdown')
+ //.dropdown()
+//;
+
+var searchActivitiesResults= [];
+var resultActivitiesDisplay = document.querySelector("results");
+
 
 
 var searchUrl = 'https://cors-anywhere.herokuapp.com/https://itunes.apple.com/search?term=movie&genreId=4413&limit=25';
@@ -13,9 +17,13 @@ var limitParameter = '&limit=';
 var limitParameterVal = '25';
 
 var boredURL = "https://www.boredapi.com/api/activity"
-var typeparam = 'type';
-var participantparm = 'participants';
-var priceparam = 'price';
+var baseUrl = "https://www.boredapi.com/api";
+var activityParam= "activity ";
+var typeParam = "type ";
+var participantsParam = "participants ";
+var priceParam = "price ";
+var linkParam =  "link";
+var activities = [];
 
 var recipePuppyUrl = 'https://recipe-puppy.p.rapidapi.com/?';
 var queryUrl = '';
@@ -26,6 +34,50 @@ var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
 
+
+
+function getActivities() {
+  fetch(boredURL, {
+  })
+      .then(function(response){
+      return response.json();
+      })
+  
+      .then(function (data){
+        console.log(data);
+
+       //console.log("data"); 
+  
+  // statement looping through activities  
+  for (let i = 0; i < 5; i++) 
+  {
+
+    // local object named activities results - 5 properties
+    var activitiesResults = {
+  
+    activity: data.activity,
+    type:  data.type,
+    participants: data.participants,
+    price:  data.price,
+    link:  data.link,
+  }
+  //logging data
+  console.log(activitiesResults);
+  
+  //adding items to array
+ activities.push(activitiesResults);
+   
+}
+
+ });
+}
+
+//calling function
+getActivities();
+
+
+
+function searchApi(search, ingredients){
 var startBtn = document.querySelector('.start-btn');
 
 function searchFood(search, ingredients){
@@ -44,6 +96,8 @@ function searchFood(search, ingredients){
     queryUrl += urlSearchParameter + urlSearchVal;
 
   }
+}
+
 
   const settings = {
     "async": true,
@@ -60,13 +114,13 @@ function searchFood(search, ingredients){
   $.ajax(settings).done(function (response) {
     // console.log(JSON.parse(response));
     recipeResults = JSON.parse(response);
-    console.log(recipeResults);
+    //console.log(recipeResults);
     for (var i = 0;i < 5; i++){
-      console.log(recipeResults.results[i].ingredients);
-      console.log(recipeResults.results[i].title);
-      console.log(recipeResults.results[i].href);
-      console.log(recipeResults.results[i].thumbnail);
-      console.log('-----------');
+    //  console.log(recipeResults.results[i].ingredients);
+    //  console.log(recipeResults.results[i].title);
+    //  console.log(recipeResults.results[i].href);
+    //  console.log(recipeResults.results[i].thumbnail);
+    //  console.log('-----------');
 
       var foodResult = {
         foodIngredients: recipeResults.results[i].ingredients,
@@ -124,28 +178,6 @@ function displayFood(){
 }
 
 
-function getActivities() {
-fetch(boredURL, {
-})
-
-  .then(function(response){
-    return response.json();
-    })
-
-    .then(function (data){
-      // console.log(data);
-    });
-//  console.log("test runs"); 
-}
-
-for (let i = 0; i < 5; i++) {
-  getActivities();
-  
-}
-
-
-
-
 
 var movies = [];
 
@@ -154,14 +186,14 @@ var topUrl = 'https://cors-anywhere.herokuapp.com/https://rss.itunes.apple.com/a
 
 function searchTopMovies(){
 
-	fetch(topUrl, {})
-	.then(function (response) {
+fetch(topUrl, {})
+.then(function (response) {
 	
     	return response.json();
  	})
 	.then(function (data) {
-		console.log('top movies----------------------------------------------------------');
-    	console.log(data); 
+		//console.log('top movies----------------------------------------------------------');
+    	//console.log(data); 
 		for(var i = 0; i < data.feed.results.length; i++){
 			console.log(data.feed.results[i].name + ' : ' + data.feed.results[i].genres[0].name + ' : ' + data.feed.results[i].releaseDate + ' \n: ' + data.feed.results[i].artworkUrl100.replace("200x200", "600x600"));
 
@@ -260,6 +292,6 @@ function displayMovies(){
 
 //searchMovies('star', '', '20');
 
-startBtn.addEventListener("click", function (){
-  window.location.replace('./html/search-form.html');
-})
+//startBtn.addEventListener("click", function (){
+//  window.location.replace('./html/search-form.html');
+//})
