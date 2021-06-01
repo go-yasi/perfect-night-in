@@ -34,6 +34,21 @@ var urlIngredientsVal;
 var urlSearchVal;
 var recipeResults;
 
+var userInputs = ['', '', '', '', '', '', ''];
+
+var foodDivEL = document.querySelector('#food-div');
+var movieDivEL = document.querySelector('#movie-div');
+
+function clearContent(clear) { //function to clear results from previous search
+  while(clear.firstChild) {
+      clear.removeChild(clear.firstChild);
+  }
+}
+
+function getFoodParams(){
+  userInputs[0] = document.querySelector('.search-param').value.replace(" ", "") ;
+  userInputs[1] = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+}
 
 function getActivities() {
 
@@ -51,6 +66,10 @@ function getActivities() {
         //console.log("data");
 
 
+  //urlSearchVal = document.querySelector('.search-param').value.replace(" ", "") ;
+  //urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",") ;
+  //urlSearchVal = search;
+  //urlIngredientsVal = ingredients;
         // local object named activities results - 5 properties
         var activitiesResults = {
 
@@ -65,6 +84,7 @@ function getActivities() {
 
         //adding items to array
         activities.push(activitiesResults);
+
 
         // calling display function
         displayActivities();
@@ -118,17 +138,25 @@ function displayActivities() {
 }
 
 
-function searchApi(search, ingredients) {
-  var startBtn = document.querySelector('.start-btn');
+//function searchApi(search, ingredients) {
+//  var startBtn = document.querySelector('.start-btn');
+
 
   function searchFood(search, ingredients) {
     // event.preventDefault();
 
-    urlSearchVal = document.querySelector('.search-param').value.replace(" ", "");
-    urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",");
+
+    //urlSearchVal = document.querySelector('.search-param').value.replace(" ", "");
+    //urlIngredientsVal = document.querySelector('.search-ingred').value.replace(" ", ",");
+
+    urlSearchVal = search;
+    urlIngredientsVal = ingredients;
 
 
     queryUrl = recipePuppyUrl;
+    
+    foodResults = [];
+
 
     if (urlIngredientsVal) {
       queryUrl += urlIngredientsParameter + urlIngredientsVal;
@@ -137,7 +165,7 @@ function searchApi(search, ingredients) {
       queryUrl += urlSearchParameter + urlSearchVal;
 
     }
-  }
+
 
 
   const settings = {
@@ -219,7 +247,6 @@ function displayFood() {
 }
 
 
-
 var movies = [];
 
 
@@ -255,47 +282,48 @@ function searchTopMovies() {
 
 
 
-function searchMovies(movTitle, movGenre, limit) {
-  var searchUrl = baseSearchUrl;
+function searchMovies(movTitle, movGenre, limit){
+	var searchUrl = baseSearchUrl;
+  movies = [];
 
-  if (movTitle) {
-    searchUrl += termParameter + movTitle;
-  } else {
-    searchUrl += termParameter + 'movie';
-  }
-  if (movGenre) {
-    searchUrl += genreParameter + movGenre;
-  }
-  if (limit) {
-    searchUrl += limitParameter + limit;
-  }
-  //console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
-  //console.log(searchUrl);
+	if(movTitle){
+		searchUrl +=  termParameter + movTitle;
+	}else{
+		searchUrl +=  termParameter + 'movie';
+	}
+	if(movGenre){
+		searchUrl += genreParameter + movGenre;
+	}
+	if(limit){
+		searchUrl += limitParameter + limit;
+	}
+	//console.log('movie search by: ' + '\ntitle: ' + movTitle + '\ngenre: ' + movGenre + '\nammount: ' + limit + '\n----------------------------------------------------------');
+	//console.log(searchUrl);
 
-  fetch(searchUrl, {})
-    .then(function (response) {
-
-      return response.json();
-    })
-    .then(function (data) {
-      //console.log(data); 
-
-      for (var i = 0; i < data.results.length; i++) {
-        //console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
-        var movie =
-        {
-          name: data.results[i].trackName,
-          genre: data.results[i].primaryGenreName,
-          release: data.results[i].releaseDate.slice(0, 10),
-          description: data.results[i].longDescription,
-          artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
-          trailer: data.results[i].previewUrl
-        }
-        movies.push(movie);
-      }
-      //console.log('-----------------------------');
-      displayMovies();
-    });
+	fetch(searchUrl, {})
+	.then(function (response) {
+	
+    	return response.json();
+ 	})
+	.then(function (data) {
+    	//console.log(data); 
+		
+		for(var i = 0; i < data.results.length; i++){
+			//console.log(data.results[i].trackName + ' : ' + data.results[i].primaryGenreName + ' : ' + data.results[i].releaseDate.slice(0,10) + ' \n: ' + data.results[i].artworkUrl100.replace("100x100", "600x600") + ' \n: ' + data.results[i].previewUrl);
+			var movie = 
+			{
+				name: data.results[i].trackName,  
+				genre: data.results[i].primaryGenreName ,
+				release: data.results[i].releaseDate.slice(0,10),				
+				//description: data.results[i].longDescription ,					
+				artUrl: data.results[i].artworkUrl100.replace("100x100", "600x600"),
+				trailer: data.results[i].previewUrl
+			}
+			movies.push(movie);
+		}
+		//console.log('-----------------------------');
+    displayMovies();
+	});
 }
 
 
@@ -331,8 +359,75 @@ function displayMovies() {
   }
 }
 
-//searchMovies('star', '', '20');
+var searchBtn = document.querySelector('#searchBtn');
 
-//startBtn.addEventListener("click", function (){
-//  window.location.replace('./html/search-form.html');
-//})
+var searchMovListener = function () {
+  var userTitleInput = document.querySelector('.movTitleInput').value;
+
+  var userGenreInput = document.querySelector('.movGenreInput').value;
+  
+  if(userGenreInput === 'Select Genre'){
+    userGenreInput = '';
+  }else if(userGenreInput === 'action'){
+    userGenreInput = '4401';
+  }else if(userGenreInput === 'comedy'){
+    userGenreInput = '4404';
+  }else if(userGenreInput === 'drama'){
+    userGenreInput = '4406';
+  }else if(userGenreInput === 'horror'){
+    userGenreInput = '4408';
+  }else if(userGenreInput === 'kids'){
+    userGenreInput = '4410';
+  }else if(userGenreInput === 'romance'){
+    userGenreInput = '4412';
+  }else if(userGenreInput === 'scifi'){
+    userGenreInput = '4413';
+  }else if(userGenreInput === 'thriller'){
+    userGenreInput = '4416';
+  }
+
+
+  userInputs[2] = userGenreInput;
+  userInputs[3] = userTitleInput;
+};
+
+function clickSearch(){
+  window.location.replace('../html/results.html');
+  console.log('hi');
+
+  searchMovListener();
+  getFoodParams();
+
+  console.log('movies:');
+  console.log(movies);
+  //console.log(movies.length);
+  console.log('foods:');
+  console.log(foodResults);
+  //console.log(foodResults.length);
+  console.log(userInputs);
+
+
+  console.log(JSON.stringify(movies));
+
+
+  localStorage.setItem('inputs', JSON.stringify(userInputs));
+
+}
+
+function searchResults(){
+  userInputs = JSON.parse(localStorage.getItem('inputs'));
+  console.log(userInputs);
+  searchFood(userInputs[0], userInputs[1]);
+  searchMovies(userInputs[3], userInputs[2], '20');
+}
+
+if(document.title === 'Let\'s Plan!'){
+  searchBtn.addEventListener('click', clickSearch);
+  console.log('form page');
+}
+
+if(document.title === 'This is Your Perfect Night In'){
+  console.log('results page');
+  searchResults();
+}
+
