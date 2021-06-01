@@ -106,24 +106,24 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
-    activityactivityEL.textContent = activities.activity;
+    activityactivityEL.textContent = activities[i].activity;
 
     var activitytypeEL = document.createElement('p');
     activitytypeEL.className = " "; //CSS Class 
-    activitytypeEL.textContent = activities.type;
+    activitytypeEL.textContent = activities[i].type;
 
     var activityparticipantEL = document.createElement('p');
     activityparticipantEL.className = " "; //CSS Class 
-    activityparticipantEL.textContent = activities.participant;
+    activityparticipantEL.textContent = activities[i].participant;
 
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
-    activitypriceEL.textContent = activities.price;
+    activitypriceEL.textContent = activities[i].price;
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
-    activitylinkEL.textContent = activities.link;
+    activitylinkEL.textContent = activities[i].link;
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
@@ -132,7 +132,7 @@ function displayActivities() {
     activitydetailResultsEL.appendChild(activitypriceEL);
     activitydetailResultsEL.appendChild(activitylinkEL);
 
-    document.body.appendChild(activitydetailResultsEL);
+    document.querySelector("#activities-div").appendChild(activitydetailResultsEL);
 
   }
 }
@@ -236,13 +236,12 @@ function displayFood() {
     resultsPicEl.setAttribute('width', '150px');
     resultsPicEl.setAttribute('height', '150px');
 
-
+    resultsEl.appendChild(resultsPicEl);
     resultsEl.appendChild(resultsTitleEl);
     resultsEl.appendChild(resultsIngredEl);
-    resultsEl.appendChild(resultsPicEl);
     resultsEl.appendChild(resultsLinksEl);
 
-    document.body.appendChild(resultsEl);
+    document.querySelector("#food-div").appendChild(resultsEl);
   }
 }
 
@@ -333,29 +332,30 @@ function displayMovies() {
   //console.log(movies)
   for (var i = 0; i < 5; i++) {
     var movResultDivEL = document.createElement('div');
-
+    movResultDivEL.className = 'movie-result';
 
     var movTitleEL = document.createElement('h5');
     movTitleEL.textContent = movies[i].name;
+    movTitleEL.className = 'movie-title';
 
     var movGenreEL = document.createElement('p');
     movGenreEL.textContent = movies[i].genre;
-    movGenreEL.className = '';//CSS CLASS
+    movGenreEL.className = 'movie-genre';//CSS CLASS
 
     var movDateEL = document.createElement('p');
     movDateEL.textContent = movies[i].release;
-    movDateEL.className = '';//CSS CLASS
+    movDateEL.className = 'movie-date';//CSS CLASS
 
     var movImgEL = document.createElement('img');
     movImgEL.src = movies[i].artUrl;
-    movImgEL.className = ''; //CSS CLASS
+    movImgEL.className = 'movie-poster'; //CSS CLASS
 
+    movResultDivEL.appendChild(movImgEL);
     movResultDivEL.appendChild(movTitleEL);
     movResultDivEL.appendChild(movGenreEL);
     movResultDivEL.appendChild(movDateEL);
-    movResultDivEL.appendChild(movImgEL);
 
-    document.body.appendChild(movResultDivEL); //change where its displayed
+    document.querySelector("#movie-div").appendChild(movResultDivEL); //change where its displayed
   }
 }
 
