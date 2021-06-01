@@ -70,7 +70,7 @@ function getActivities() {
         displayActivities();
 
       });
-   
+
   }
 
 }
@@ -82,7 +82,7 @@ getActivities();
 function displayActivities() {
 
   for (var i = 0; i < 5; i++) {
-    var activityResultsEL = document.createElement('div');
+    var activitydetailResultsEL = document.createElement('div');
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
@@ -106,13 +106,13 @@ function displayActivities() {
     activitylinkEL.textContent = activities.link;
     //console.log(activities.link);
 
-    activityResultsEL.appendChild(activityactivityEL);
-    activityResultsEL.appendChild(activitytypeEL);
-    activityResultsEL.appendChild(activityparticipantEL);
-    activityResultsEL.appendChild(activitypriceEL);
-    activityResultsEL.appendChild(activitylinkEL);
+    activitydetailResultsEL.appendChild(activityactivityEL);
+    activitydetailResultsEL.appendChild(activitytypeEL);
+    activitydetailResultsEL.appendChild(activityparticipantEL);
+    activitydetailResultsEL.appendChild(activitypriceEL);
+    activitydetailResultsEL.appendChild(activitylinkEL);
 
-    document.body.appendChild(activityResultsEL);
+    document.body.appendChild(activitydetailResultsEL);
 
   }
 }
