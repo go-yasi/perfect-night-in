@@ -126,8 +126,12 @@ a:hover {
 /* ----------------------------- */
 /* Intro */
 .instructions {
-    width: 60%;
-    margin: 0 auto;
+    /* width: 60%; */
+    /* margin: 0 auto; */
+}
+
+.search-form-container {
+    padding-top: 4vw;
 }
 
 /* Accordion Styles */
@@ -135,6 +139,10 @@ a:hover {
     background-color: transparent !important;
     border: 0;
 }
+.accordion-header {
+    border-bottom: 1px solid var(--gray);
+}
+
 .accordion-body {
     color: var(--white);
 }
@@ -185,9 +193,9 @@ a:hover {
 
 /* Search Button */
 .search-btn {
-    width: 25%;
+    width: 30%;
     margin: 0 auto;
-    margin-top: 2vw;
+    margin-top: 4vw;
 }
 
 .modal-dialog p, .modal-header h5 {

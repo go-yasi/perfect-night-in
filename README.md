@@ -13,6 +13,7 @@ Provide a short description explaining the what, why, and how of your project. U
 
 ## Installation
 What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Activities API:  https://www.boredapi.com/api/activity
 
 ## Usage
 Here is a link to view the deployed application: 
