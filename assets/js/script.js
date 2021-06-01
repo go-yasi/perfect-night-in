@@ -145,6 +145,7 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
+<<<<<<< HEAD
     activityactivityEL.textContent = activities[0].activity;
 
     var activitytypeEL = document.createElement('p');
@@ -158,11 +159,30 @@ function displayActivities() {
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
     activitypriceEL.textContent = activities[0].price;
+=======
+    activityactivityEL.textContent = activities[i].activity;
+
+    var activitytypeEL = document.createElement('p');
+    activitytypeEL.className = " "; //CSS Class 
+    activitytypeEL.textContent = activities[i].type;
+
+    var activityparticipantEL = document.createElement('p');
+    activityparticipantEL.className = " "; //CSS Class 
+    activityparticipantEL.textContent = activities[i].participant;
+
+    var activitypriceEL = document.createElement('p');
+    activitypriceEL.className = " "; //CSS Class 
+    activitypriceEL.textContent = activities[i].price;
+>>>>>>> d73779105f02572e72e832339e023bc8acf12744
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
+<<<<<<< HEAD
     activitylinkEL.textContent = activities[0].link;
+=======
+    activitylinkEL.textContent = activities[i].link;
+>>>>>>> d73779105f02572e72e832339e023bc8acf12744
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
@@ -171,7 +191,7 @@ function displayActivities() {
     activitydetailResultsEL.appendChild(activitypriceEL);
     activitydetailResultsEL.appendChild(activitylinkEL);
 
-    document.body.appendChild(activitydetailResultsEL);
+    document.querySelector("#activities-div").appendChild(activitydetailResultsEL);
 
   }
 }
@@ -231,8 +251,8 @@ function displayActivities() {
       //  console.log('-----------');
 
       var foodResult = {
-        foodIngredients: recipeResults.results[i].ingredients,
         foodTitles: recipeResults.results[i].title,
+        foodIngredients: recipeResults.results[i].ingredients,
         foodLinks: recipeResults.results[i].href,
         foodPic: recipeResults.results[i].thumbnail,
       }
@@ -266,22 +286,22 @@ function displayFood() {
     var resultsLinksEl = document.createElement('a');
     resultsLinksEl.className = 'food-links' // or which ever class you Preffer
     resultsLinksEl.setAttribute('href', foodResults[i].foodLinks);
-    resultsLinksEl.textContent = foodResults[i].foodLinks;
+    resultsLinksEl.textContent = "View Recipe";
     // console.log(foodResults[i].foodLinks);
 
     var resultsPicEl = document.createElement('img')
     resultsPicEl.className = 'food-pic' // or which ever class you Preffer
     resultsPicEl.src = foodResults[i].foodPic;
-    resultsPicEl.setAttribute('width', '150px')
-    resultsPicEl.setAttribute('height', '150px')
+    resultsPicEl.setAttribute('width', '150px');
+    resultsPicEl.setAttribute('height', '150px');
 
 
-    resultsEl.appendChild(resultsIngredEl);
     resultsEl.appendChild(resultsTitleEl);
-    resultsEl.appendChild(resultsLinksEl);
+    resultsEl.appendChild(resultsIngredEl);
     resultsEl.appendChild(resultsPicEl);
+    resultsEl.appendChild(resultsLinksEl);
 
-    document.body.appendChild(resultsEl);
+    document.querySelector("#food-div").appendChild(resultsEl);
   }
 }
 
@@ -394,7 +414,7 @@ function displayMovies() {
     movResultDivEL.appendChild(movDateEL);
     movResultDivEL.appendChild(movImgEL);
 
-    document.body.appendChild(movResultDivEL); //change where its displayed
+    document.querySelector("#movie-div").appendChild(movResultDivEL); //change where its displayed
   }
 }
 
