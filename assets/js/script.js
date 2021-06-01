@@ -167,9 +167,9 @@ function displayActivities() {
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
-    activitydetailResultsEL.appendChild(activitytypeEL);
-    activitydetailResultsEL.appendChild(activityparticipantEL);
-    activitydetailResultsEL.appendChild(activitypriceEL);
+    //activitydetailResultsEL.appendChild(activitytypeEL);
+    //activitydetailResultsEL.appendChild(activityparticipantEL);
+    //activitydetailResultsEL.appendChild(activitypriceEL);
     activitydetailResultsEL.appendChild(activitylinkEL);
 
     document.querySelector("#activities-div").appendChild(activitydetailResultsEL);
