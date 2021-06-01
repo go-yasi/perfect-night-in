@@ -19,7 +19,7 @@ body {
     /* min-height: 100vh; */
 }
 
-footer {
+.search-footer {
     padding: 10px;
     position: relative;
     bottom: 0;
@@ -27,6 +27,14 @@ footer {
     max-width: 100%;
     width: 100%;
     margin-top: 50px;
+}
+
+.index-footer {
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
 }
 
 .footcap {
@@ -112,23 +120,18 @@ a:hover {
 
 
 /* Cover Page */
-.cover-page-body {
-    display: flex;
-    align-items: center;
+.cover-page {
+    padding-top: 15vh;
 }
+
 .home-intro {
     width: 60%;
-    margin: 0 auto 1vw;
+    margin: 5vw auto 1vw;
 }
 
 /* ----------------------------- */
 /* --- SEARCH FORM PAGE --- */
 /* ----------------------------- */
-/* Intro */
-.instructions {
-    /* width: 60%; */
-    /* margin: 0 auto; */
-}
 
 .search-form-container {
     padding-top: 4vw;

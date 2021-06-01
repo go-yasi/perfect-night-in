@@ -476,14 +476,3 @@ if(document.title === 'This is Your Perfect Night In'){
   searchResults();
 }
 
-
-var restartBtn = document.querySelector('#restart-btn'); 
-
-function restartSearch(){
-  console.log('ok');
-  window.location.replace('../html/search-form.html');
-}
-
-function clickRestart(){
-  restartBtn.addEventListener('click', restartSearch);
-}
