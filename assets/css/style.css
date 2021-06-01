@@ -16,17 +16,17 @@
 body {
     background-color: var(--black);
     color: var(--white);
-    height: 100vh;
+    /* min-height: 100vh; */
 }
 
 footer {
-
     padding: 10px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     /* display: block; */
     max-width: 100%;
     width: 100%;
+    margin-top: 50px;
 }
 
 .footcap {
@@ -132,6 +132,9 @@ a:hover {
 
 .search-form-container {
     padding-top: 4vw;
+    overflow: auto;
+    clear: both;
+    min-height: 60vh;
 }
 
 /* Accordion Styles */
