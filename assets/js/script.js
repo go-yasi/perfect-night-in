@@ -192,8 +192,8 @@ function displayActivities() {
       //  console.log('-----------');
 
       var foodResult = {
-        foodIngredients: recipeResults.results[i].ingredients,
         foodTitles: recipeResults.results[i].title,
+        foodIngredients: recipeResults.results[i].ingredients,
         foodLinks: recipeResults.results[i].href,
         foodPic: recipeResults.results[i].thumbnail,
       }
@@ -233,14 +233,14 @@ function displayFood() {
     var resultsPicEl = document.createElement('img')
     resultsPicEl.className = 'food-pic' // or which ever class you Preffer
     resultsPicEl.src = foodResults[i].foodPic;
-    resultsPicEl.setAttribute('width', '150px')
-    resultsPicEl.setAttribute('height', '150px')
+    resultsPicEl.setAttribute('width', '150px');
+    resultsPicEl.setAttribute('height', '150px');
 
 
-    resultsEl.appendChild(resultsIngredEl);
     resultsEl.appendChild(resultsTitleEl);
-    resultsEl.appendChild(resultsLinksEl);
+    resultsEl.appendChild(resultsIngredEl);
     resultsEl.appendChild(resultsPicEl);
+    resultsEl.appendChild(resultsLinksEl);
 
     document.body.appendChild(resultsEl);
   }
