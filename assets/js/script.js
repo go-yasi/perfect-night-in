@@ -145,7 +145,6 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
-<<<<<<< HEAD
     activityactivityEL.textContent = activities[0].activity;
 
     var activitytypeEL = document.createElement('p');
@@ -159,30 +158,11 @@ function displayActivities() {
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
     activitypriceEL.textContent = activities[0].price;
-=======
-    activityactivityEL.textContent = activities[i].activity;
-
-    var activitytypeEL = document.createElement('p');
-    activitytypeEL.className = " "; //CSS Class 
-    activitytypeEL.textContent = activities[i].type;
-
-    var activityparticipantEL = document.createElement('p');
-    activityparticipantEL.className = " "; //CSS Class 
-    activityparticipantEL.textContent = activities[i].participant;
-
-    var activitypriceEL = document.createElement('p');
-    activitypriceEL.className = " "; //CSS Class 
-    activitypriceEL.textContent = activities[i].price;
->>>>>>> d73779105f02572e72e832339e023bc8acf12744
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
-<<<<<<< HEAD
     activitylinkEL.textContent = activities[0].link;
-=======
-    activitylinkEL.textContent = activities[i].link;
->>>>>>> d73779105f02572e72e832339e023bc8acf12744
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
