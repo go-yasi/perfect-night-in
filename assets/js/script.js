@@ -106,24 +106,24 @@ function displayActivities() {
 
     var activityactivityEL = document.createElement('p');
     activityactivityEL.className = " "; //CSS Class 
-    activityactivityEL.textContent = activities.activity;
+    activityactivityEL.textContent = activities[i].activity;
 
     var activitytypeEL = document.createElement('p');
     activitytypeEL.className = " "; //CSS Class 
-    activitytypeEL.textContent = activities.type;
+    activitytypeEL.textContent = activities[i].type;
 
     var activityparticipantEL = document.createElement('p');
     activityparticipantEL.className = " "; //CSS Class 
-    activityparticipantEL.textContent = activities.participant;
+    activityparticipantEL.textContent = activities[i].participant;
 
     var activitypriceEL = document.createElement('p');
     activitypriceEL.className = " "; //CSS Class 
-    activitypriceEL.textContent = activities.price;
+    activitypriceEL.textContent = activities[i].price;
 
     var activitylinkEL = document.createElement('a');
     activitylinkEL.className = " "; //CSS Class 
     activitylinkEL.setAttribute = ("href", activities.link);
-    activitylinkEL.textContent = activities.link;
+    activitylinkEL.textContent = activities[i].link;
     //console.log(activities.link);
 
     activitydetailResultsEL.appendChild(activityactivityEL);
@@ -132,7 +132,7 @@ function displayActivities() {
     activitydetailResultsEL.appendChild(activitypriceEL);
     activitydetailResultsEL.appendChild(activitylinkEL);
 
-    document.body.appendChild(activitydetailResultsEL);
+    document.querySelector("#activities-div").appendChild(activitydetailResultsEL);
 
   }
 }
@@ -242,7 +242,7 @@ function displayFood() {
     resultsEl.appendChild(resultsLinksEl);
     resultsEl.appendChild(resultsPicEl);
 
-    document.body.appendChild(resultsEl);
+    document.querySelector("#food-div").appendChild(resultsEl);
   }
 }
 
@@ -355,7 +355,7 @@ function displayMovies() {
     movResultDivEL.appendChild(movDateEL);
     movResultDivEL.appendChild(movImgEL);
 
-    document.body.appendChild(movResultDivEL); //change where its displayed
+    document.querySelector("#movie-div").appendChild(movResultDivEL); //change where its displayed
   }
 }
 
