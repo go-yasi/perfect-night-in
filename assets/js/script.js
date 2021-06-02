@@ -477,12 +477,9 @@ if(document.title === 'This is Your Perfect Night In'){
   searchResults();
 }
 
-<<<<<<< HEAD
-=======
 
 var restartBtn = document.querySelector('#restart-btn'); 
 
 restartBtn.addEventListener('click', function (){
   window.location.replace('../html/search-form.html');
 })
->>>>>>> 8ec8fea7857be59566e0d783d34c5a782aead96d
